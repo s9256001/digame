@@ -17,17 +17,17 @@ Slot 封包
 		- LineNo      int   // 線號; line game: 線號, way game: 0, 997: scatter, 998: bonus, 999: free game
 		- SymbolID    int   // 中獎 symbol id
 		- SymbolCount int   // symbol 連線數
-		- LineCount   int   // way game 使用的連線數
+		- WayeCount   int   // way game 使用的連線數
 		- WinPosition []int // 贏分位置索引的列表: row-major, 左上到右下順序, 依序為 1~15
 		- Multiplier  int   // 倍數
 		- Win         int64 // 贏分
+		- PayRate     int   // 賠率
 	- GtoCSlotNGPlay
 		- Code int // 11003
 		- Result       int                // 結果
 		- RoundID      int64              // 局 ID
 		- WinType      int                // 中獎類型; 0: none, 11: 一般贏分, 21: bonus game, 31: free game
 		- Multiplier   int                // 倍數
-		- Money        int64              // 金額
 		- SymbolResult []int              // symbol id 盤面: row-major, 左上到右下順序
 		- WinLines     []SSlotWinLineInfo // 贏線資訊列表
 0. **Bonus Game Start**
@@ -85,7 +85,7 @@ Slot 封包
 		- Code int // 11017
 		- Result         int // 結果
 		- FGTimes        int // FG 目前次數
-		- FGTotalTimes   int // FG 總次數
+		- FGTotalTimes   int // FG 總次數; 前端內部 retrigger 請自行判斷上限為此
 		- FGTimesAwarded int // FG 額外增加次數
 		- Multiplier     int // 倍數
 0. **Free Game Spin**
@@ -104,3 +104,10 @@ Slot 封包
 	- GtoCSlotFGEnd
 		- Code int // 11021
 		- Result int // 結果
+0. **Round End**
+	- CtoGSlotRoundEnd
+		- Code int // 11022
+	- GtoCSlotRoundEnd
+		- Code int // 11023
+		- Result int   // 結果
+		- Money  int64 // 金額
