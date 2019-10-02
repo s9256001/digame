@@ -4,39 +4,25 @@ note "NG 表示 NormalGame\nBG 表示 BonusGame\nLD 表示 LuckyDraw\nFG 表示 
 
 Init : 初始
 NGPlay : 等待下注\n[NGPlay]
-BGStart : BG 開始表演\n[BGStart]
-BGPlay : BG 等待選項\n[BGPlay]
-BGEnd : BG 結束表演\n[BGEnd]
-LDStart : LD 開始表演\n[LDStart]
-LDPlay : LD 等待選項\n[LDPlay]
-LDEnd : LD 結束表演\n[LDEnd]
-FGStart : FG 開始表演\n[FGStart]
-FGPlay : FG 等待 Spin\n[FGPlay]
-FGEnd : FG 結束表演\n[FGEnd]
+BGPlay : BG 表演\n[BGPlay]
+LDPlay : LD 表演\n[LDPlay]
+FGPlay : FG 表演\n[FGPlay]
+RoundEnd : 局結束\n[RoundEnd]
 
 [*] --> Init
 Init --> NGPlay: 玩家加入遊戲
-NGPlay --> NGPlay : 沒贏分
-NGPlay --> BGStart : 中 BG
-NGPlay --> LDStart : 中 FG, 有 LD
-NGPlay --> FGStart : 中 FG, 沒 LD
+NGPlay --> RoundEnd : 沒中 BG、FG
+NGPlay --> BGPlay : 中 BG
+NGPlay --> LDPlay : 中 FG, 有 LD
+NGPlay --> FGPlay : 中 FG, 沒 LD
 
-BGStart --> BGPlay : BG 開始表演
-BGPlay --> BGPlay : BG 選項完, 沒結束
-BGPlay --> BGEnd : BG 選項完, 有結束
-BGEnd --> NGPlay : BG 結束
+BGPlay --> RoundEnd : BG 表演完, 結束
 
-LDStart --> LDPlay : LD 開始表演
-LDPlay --> LDPlay : LD 選項完, 沒結束
-LDPlay --> LDEnd : LD 選項完, 有結束
-LDEnd --> FGStart : LD 結束
+LDPlay --> RoundEnd : LD 表演完, 結束
 
-FGStart --> FGPlay : FG 開始表演
-FGPlay --> FGPlay : FG Spin 完, 沒結束
-FGPlay --> FGStart : FG Spin 完, 內部 FG Retrigger, 需要轉場
-FGPlay --> FGEnd : FG Spin 完, 有結束
-FGEnd --> NGPlay : FG 結束
-FGEnd --> LDStart : FG 結束, FG retrigger, 有 LD
-FGEnd --> FGStart : FG 結束, FG retrigger, 沒 LD
+FGPlay --> LDPlay : FG 表演完, FG retrigger, 有 LD
+FGPlay --> RoundEnd : FG 表演完, 結束
+
+RoundEnd --> NGPlay : 局結束, 記帳完畢
 
 @enduml
