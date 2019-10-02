@@ -8,17 +8,17 @@ Slot 封包
 		- Line                  int   // 線數; line game: 線數, way game: 1
 		- BetMultiples          []int // 押注乘數列表
 		- BetUnit               int64 // 押注單位; line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
+		- FGRetriggerAwardTimes int   // FG retrigger 額外增加的次數
 0. **Base Game Spin**
 	- CtoGSlotNGPlay
 		- Code int // 11002
 		- BetMultiple int // 押注乘數
 	- SSlotWinLineInfo
 		- LineNo      int   // 線號; line game: 線號, way game: 0, 997: scatter, 998: bonus, 999: free game
-		- WinType     int   // ?贏分類型 0：一般贏分(左線中獎), 1：進入FreeGame(ReTrigger), 2：右線中獎?
 		- SymbolID    int   // 中獎 symbol id
 		- SymbolCount int   // symbol 連線數
 		- LineCount   int   // way game 使用的連線數
-		- WinPosition []int // 贏分位置: row-major, 左上到右下順序
+		- WinPosition []int // 贏分位置索引的列表: row-major, 左上到右下順序, 依序為 1~15
 		- Multiplier  int   // 倍數
 		- Win         int64 // 贏分
 	- GtoCSlotNGPlay
