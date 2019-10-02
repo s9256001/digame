@@ -1,0 +1,10 @@
+@startuml
+
+Empty : 空位
+Play : 遊戲中
+
+[*] --> Empty : 初始
+Empty --> Play : 玩家進來
+Play --> Empty : 玩家離開\n遊戲中需自動歸帳
+
+@enduml
