@@ -123,3 +123,5 @@ Slot 封包
 		- Code int // 11023
 		- Result int   // 結果 (錯誤碼)
 		- Money  int64 // 金額
+0. **問題**
+	- 閒置踢除由 server 判定嗎
