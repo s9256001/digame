@@ -2,6 +2,7 @@ Slot 封包
 =========================
 0. **初始資訊**
 	- GtoCSlotInit
+		- GtoCJoinGame 後後端會直接送這封包
 		- Code int // 11001
 		- MoneyFractionMultiple int   // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以 MoneyFractionMultiple
 		- Denom                 int   // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)

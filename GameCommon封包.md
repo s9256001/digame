@@ -13,10 +13,8 @@ Game Common 封包
 	- GtoCJoinGame
 		- Code int // 1005
 		- GameToken string // 遊戲 token
-		- Result    int    // 結果
+		- Result    int    // 結果 (錯誤碼)
 		- GameID    int    // 遊戲 ID
-		- AccountID uint32 // 帳號 ID
-		- Account   string // 帳號
 		- Money     int64  // 金額
 0. **離開遊戲**
 	- CtoGLeaveGame
