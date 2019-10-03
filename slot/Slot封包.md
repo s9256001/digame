@@ -125,3 +125,6 @@ Slot 封包
 		- Money  int64 // 金額
 0. **問題**
 	- 閒置踢除由 server 判定嗎
+	- Demo server、CQ9 環境配置
+	- 錯誤處理
+	- 語系是否要帶
