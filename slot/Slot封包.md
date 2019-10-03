@@ -41,7 +41,7 @@ Slot 封包
 		- LDOptions    []SSlotLDOptions   // LD 選項列表
 0. **Bonus Game Play**
 	- CtoGSlotBGPlay
-		- Code int // 11006
+		- Code int // 11004
 	- SSlotBGPlayInfo
 		- Multipliers        []int   // 倍數選項列表
 		- WinOptions         []int64 // 贏分選項列表
@@ -49,27 +49,27 @@ Slot 封包
 		- WinOptionSelected  int64   // 選中的贏分選項
 		- Win                int64   // 贏分
 	- GtoCSlotBGPlay
-		- Code int // 11007
+		- Code int // 11005
 		- Result      int               // 結果 (錯誤碼)
 		- BGPlayInfos []SSlotBGPlayInfo // BG 選項資訊列表
 0. **Lucky Draw Play**
 	- CtoGSlotLDPlay
 		- 玩家選完, 前端表演完, 再發送此封包
-		- Code int // 11012
+		- Code int // 11006
 		- SelectedIndexes []int // 選取的索引列表 (明選會用到)
 	- GtoCSlotLDPlay
-		- Code int // 11013
+		- Code int // 11007
 		- Result        int     // 結果 (錯誤碼)
 0. **Free Game Play**
 	- CtoGSlotFGPlay
-		- Code int // 11018
+		- Code int // 11008
 	- SSlotFGSpinInfo
 		- WinType      int                // 中獎類型; 0: none, 11: 一般贏分, 21: bonus game, 31: free game
 		- SymbolResult []int              // symbol id 盤面: row-major, 左上到右下順序
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- FGTotalTimes int               // FG 總次數
 	- GtoCSlotFGPlay
-		- Code int // 11019
+		- Code int // 11009
 		- Result       int                // 結果 (錯誤碼)
 		- Multiplier   int               // 倍數
 		- FGSpinInfos  []SSlotFGSpinInfo // FG Spin 資訊列表
@@ -77,8 +77,8 @@ Slot 封包
 0. **Round End**
 	- 局結束, 後端此時錢才真的記入 DB
 	- CtoGSlotRoundEnd
-		- Code int // 11022
+		- Code int // 11010
 	- GtoCSlotRoundEnd
-		- Code int // 11023
+		- Code int // 11011
 		- Result int   // 結果 (錯誤碼)
 		- Money  int64 // 金額
