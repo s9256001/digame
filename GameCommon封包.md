@@ -9,7 +9,7 @@ Game Common 封包
 		- Code int // 1002
 		- GameToken string // 遊戲 token; Demo 不會用到此欄位
 		- GameID    int    // 客端對應的遊戲 ID; 防止 GameToken 貼在不同遊戲網頁的錯誤
-		- 若 Server 比對 GameID 不合, 將回傳加入遊戲錯誤並切斷連線
+		- // 若 Server 比對 GameID 不合, 將回傳加入遊戲錯誤並切斷連線
 	- GtoCJoinGame
 		- Code int // 1005
 		- GameToken string // 遊戲 token
