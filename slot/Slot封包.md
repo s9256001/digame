@@ -1,5 +1,7 @@
 Slot 封包
 =========================
+0. **說明**
+	- 由於 CQ9 要求玩家斷線, FG 必須整輪 (可能包含多場 Spin) 表演完, 所以此處 BG、LD、FG 都採用一包封包設計
 0. **初始資訊**
 	- GtoCSlotInit
 		- GtoCJoinGame 後 Server 會直接送這封包
@@ -52,6 +54,7 @@ Slot 封包
 		- BGPlayInfos []SSlotBGPlayInfo // BG 選項資訊列表
 0. **Lucky Draw Play**
 	- CtoGSlotLDPlay
+		- 玩家選完, 前端表演完, 再發送此封包
 		- Code int // 11012
 		- SelectedIndexes []int // 選取的索引列表 (明選會用到)
 	- GtoCSlotLDPlay

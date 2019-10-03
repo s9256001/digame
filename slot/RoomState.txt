@@ -3,11 +3,11 @@
 note "NG 表示 NormalGame\nBG 表示 BonusGame\nLD 表示 LuckyDraw\nFG 表示 FreeGame\n[] 為玩家送來的封包" as N1
 
 Init : 初始
-NGPlay : 等待下注\n[NGPlay]
-BGPlay : BG 表演\n[BGPlay]
-LDPlay : LD 表演\n[LDPlay]
-FGPlay : FG 表演\n[FGPlay]
-RoundEnd : 局結束\n[RoundEnd]
+NGPlay : 等待下注\n[CtoGSlotNGPlay]
+BGPlay : BG 表演\n[CtoGSlotBGPlay]
+LDPlay : LD 表演\n[CtoGSlotLDPlay]
+FGPlay : FG 表演\n[CtoGSlotFGPlay]
+RoundEnd : 局結束\n[CtoGSlotRoundEnd]
 
 [*] --> Init
 Init --> NGPlay: 玩家加入遊戲
@@ -18,7 +18,7 @@ NGPlay --> FGPlay : 中 FG, 沒 LD
 
 BGPlay --> RoundEnd : BG 表演完, 結束
 
-LDPlay --> RoundEnd : LD 表演完, 結束
+LDPlay --> FGPlay : LD 表演完, 進 FG
 
 FGPlay --> LDPlay : FG 表演完, FG retrigger, 有 LD
 FGPlay --> RoundEnd : FG 表演完, 結束
