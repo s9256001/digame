@@ -1,13 +1,18 @@
 Slot 封包
 =========================
 
-……
-[TOC]
-……
+<span id="目錄"></span>
+<a href="#說明">說明</a><br />
+<a href="#初始資訊">初始資訊</a><br />
+<a href="#Base Game Spin">Base Game Spin</a><br />
+<a href="#Bonus Game Play">Bonus Game Play</a><br />
+<a href="#Lucky Draw Play">Lucky Draw Play</a><br />
+<a href="#Free Game Play">Free Game Play</a><br />
+<a href="#Round End">Round End</a>
 
-0. **說明**
+0. **說明**<span id="說明"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- 由於 CQ9 要求玩家斷線, FG 必須整輪 (可能包含多場 Spin) 表演完, 所以此處 BG、LD、FG 都採用一包封包設計
-0. **初始資訊**
+0. **初始資訊**<span id="初始資訊"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- GtoCSlotInit
 		- GtoCJoinGame 後 Server 會直接送這封包
 		- Code int // 11001
@@ -16,7 +21,7 @@ Slot 封包
 		- Line                  int   // 線數; line game: 線數, way game: 1
 		- BetMultiples          []int // 押注乘數列表
 		- BetUnit               int64 // 押注單位; line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
-0. **Base Game Spin**
+0. **Base Game Spin**<span id="Base Game Spin"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- CtoGSlotNGPlay
 		- Code int // 11002
 		- BetMultiple int // 押注乘數
@@ -44,7 +49,7 @@ Slot 封包
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- FGTotalTimes int               // FG 總次數
 		- LDOptions    []SSlotLDOptions   // LD 選項列表
-0. **Bonus Game Play**
+0. **Bonus Game Play**<span id="Bonus Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- CtoGSlotBGPlay
 		- Code int // 11004
 	- SSlotBGPlayInfo
@@ -57,7 +62,7 @@ Slot 封包
 		- Code int // 11005
 		- Result      int               // 結果 (錯誤碼)
 		- BGPlayInfos []SSlotBGPlayInfo // BG 選項資訊列表
-0. **Lucky Draw Play**
+0. **Lucky Draw Play**<span id="Lucky Draw Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- CtoGSlotLDPlay
 		- 玩家選完, 前端表演完, 再發送此封包
 		- Code int // 11006
@@ -65,7 +70,7 @@ Slot 封包
 	- GtoCSlotLDPlay
 		- Code int // 11007
 		- Result        int     // 結果 (錯誤碼)
-0. **Free Game Play**
+0. **Free Game Play**<span id="Free Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- CtoGSlotFGPlay
 		- Code int // 11008
 	- SSlotFGSpinInfo
@@ -79,7 +84,7 @@ Slot 封包
 		- Multiplier   int               // 倍數
 		- FGSpinInfos  []SSlotFGSpinInfo // FG Spin 資訊列表
 		- LDOptions    []SSlotLDOptions   // LD 選項列表
-0. **Round End**
+0. **Round End**<span id="Round End"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#目錄">(目錄)</a>
 	- 局結束, 後端此時錢才真的記入 DB
 	- CtoGSlotRoundEnd
 		- Code int // 11010
