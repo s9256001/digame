@@ -29,7 +29,7 @@ Slot 封包<span id="標題"></span>
 		- SymbolID    int   // 中獎 symbol id
 		- SymbolCount int   // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
 		- WayeCount   int   // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
-		- WinPosition []int // 贏分位置索引的列表: 位置為 row-major, 左上到右下順序, 依序為 1~15
+		- WinPosition []int // 贏分位置索引的列表: 位置為 row-major, 左上到右下順序, 依序為 0~14
 		- Multiplier  int   // 倍數
 		- Win         int64 // 贏分
 		- PayRate     int   // 賠率
