@@ -41,7 +41,7 @@ Slot 封包<span id="標題"></span>
 	- GtoCSlotNGPlay
 		- Code int // 11003
 		- Result       int                // 結果 (錯誤碼)
-		- RoundID      int64              // 局 ID
+		- RoundID      uint64             // 局 ID
 		- WinType      int                // 中獎類型; 0: none, 11: 一般贏分, 21: bonus game, 31: free game
 		- Multiplier   int                // 倍數
 		- SymbolResult []int              // symbol id 盤面: row-major, 左上到右下順序
