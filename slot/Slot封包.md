@@ -44,7 +44,7 @@ Slot 封包<span id="標題"></span>
 		- RoundID      uint64             // 局 ID
 		- WinType      int                // 中獎類型; 0: none, 11: 一般贏分, 21: bonus game, 31: free game
 		- Multiplier   int                // 倍數
-		- SymbolResult []int              // symbol id 盤面: row-major, 左上到右下順序
+		- SymbolResult [][]int            // symbol id 盤面: row-major, 左上到右下順序
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- FGTotalTimes int                // FG 總次數
 		- LDOptions    []SSlotLDOptions   // LD 選項列表
