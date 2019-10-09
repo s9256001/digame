@@ -74,7 +74,7 @@ Slot 封包<span id="標題"></span>
 		- Code int // 11008
 	- SSlotFGSpinInfo
 		- WinType      int                // 中獎類型; 0: none, 11: 一般贏分, 21: bonus game, 31: free game
-		- SymbolResult []int              // symbol id 盤面: row-major, 左上到右下順序
+		- SymbolResult [][]int            // symbol id 盤面: row-major, 左上到右下順序
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- FGTotalTimes int                // FG 總次數
 	- GtoCSlotFGPlay
