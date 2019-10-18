@@ -2,9 +2,12 @@
 
 Empty : 空位
 Play : 遊戲中
+Gone : 遊戲過程中離開, 進行託管
 
 [*] --> Empty : 初始
 Empty --> Play : 玩家進來
-Play --> Empty : 玩家離開\n遊戲中需自動歸帳
+Play --> Empty : 玩家離開\n遊戲局已結束
+Play --> Gone : 玩家離開\n遊戲局未結束
+Gone --> Empty : 遊戲局已結束
 
 @enduml
