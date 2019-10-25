@@ -325,7 +325,7 @@ slot的注單<br />一局會有一個注單
 | `round_id` | BIGINT | Not null, Unique |   | 局ID |
 | `bet` | BIGINT | Not null |   | 押注 |
 | `win` | BIGINT | Not null |   | 贏的金額 |
-| `balance` | BIGINT | Not null | `'0'` | 計算完bet、win後的餘額 |
+| `balance` | BIGINT | Not null |   | 計算完bet、win後的餘額 |
 | `fg_times` | INT | Not null |   | free game次數 |
 | `ld_times` | INT | Not null |   | lucky draw次數 |
 | `bg_times` | INT | Not null |   | bonus game次數 |
