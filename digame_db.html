@@ -1,0 +1,435 @@
+<html><head><style>TD,TH{padding:3px;border:1px solid #000;}TH{text-align: left; border: 1px solid #000;}</style></head><body><h1 id="d1_doc_gen_contents">Contents</h1>
+
+<ul><li><a href="#account"><b>account</b></a></li>
+<li><a href="#balance_history"><b>balance_history</b></a></li>
+<li><a href="#bet_sync"><b>bet_sync</b></a></li>
+<li><a href="#currency"><b>currency</b></a></li>
+<li><a href="#game"><b>game</b></a></li>
+<li><a href="#game_class"><b>game_class</b></a></li>
+<li><a href="#game_type"><b>game_type</b></a></li>
+<li><a href="#log_api"><b>log_api</b></a></li>
+<li><a href="#log_error"><b>log_error</b></a></li>
+<li><a href="#log_login"><b>log_login</b></a></li>
+<li><a href="#log_logout"><b>log_logout</b></a></li>
+<li><a href="#log_order"><b>log_order</b></a></li>
+<li><a href="#log_slot_bet"><b>log_slot_bet</b></a></li>
+<li><a href="#log_slot_bet_detail"><b>log_slot_bet_detail</b></a></li>
+<li><a href="#operator"><b>operator</b></a></li>
+<li><a href="#system_value"><b>system_value</b></a></li>
+</ul><h1>Tables</h1>
+
+<h2 id="account"> Table: <code>account</code></h2>
+
+<h3>Description:</h3>
+
+<p>帳號</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>帳號ID</td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>user_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
+<tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>餘額</td></tr>
+<tr><td><code>currency_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>貨幣ID</td></tr>
+<tr><td><code>status</code></td><td>TINYINT</td><td>NOT NULL</td><td> </td><td>狀態<br />1: 正常<br />2: 凍結<br />3: 停用</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+<tr><td><code>update_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>最近一次的修改時間</td></tr>
+<tr><td><code>is_deleted</code></td><td>SMALLINT</td><td>NOT NULL</td><td> </td><td>邏輯刪除</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="balance_history"> Table: <code>balance_history</code></h2>
+
+<h3>Description:</h3>
+
+<p>餘額異動歷史</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>帳號ID</td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>amount</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>異動金額的數量</td></tr>
+<tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>操作完後的餘額</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+<tr><td><code>table_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>table名稱<br />紀錄關聯的table名稱</td></tr>
+<tr><td><code>table_id</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>table row id<br />紀錄關聯的table對應資料列的ID</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="bet_sync"> Table: <code>bet_sync</code></h2>
+
+<h3>Description:</h3>
+
+<p>cq9待同步注單的資料</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>index_id</code></td><td>VARCHAR(255)</td><td>PRIMARY, NOT NULL</td><td> </td><td>訂單索引</td></tr>
+<tr><td><code>mtcode</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>交易代碼</td></tr>
+<tr><td><code>round_code</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>局號</td></tr>
+<tr><td><code>round_id</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>局ID</td></tr>
+<tr><td><code>status</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>注單狀態<br />0: 待sync<br />1: 處理完畢</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+<tr><td><code>done_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>完成時間</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>index_id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="currency"> Table: <code>currency</code></h2>
+
+<h3>Description:</h3>
+
+<p>貨幣</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>currency_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>貨幣ID</td></tr>
+<tr><td><code>currency_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>貨幣名稱</td></tr>
+<tr><td><code>denom</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>匯率<br />錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>currency_id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="game"> Table: <code>game</code></h2>
+
+<h3>Description:</h3>
+
+<p>遊戲</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>game_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>遊戲ID</td></tr>
+<tr><td><code>game_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>遊戲名稱</td></tr>
+<tr><td><code>game_code</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>遊戲代碼<br />cq9使用</td></tr>
+<tr><td><code>game_class_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲類別ID<br />主類別</td></tr>
+<tr><td><code>game_type_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲類型ID<br />類別下的子類型</td></tr>
+<tr><td><code>line</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>線數<br />slot使用</td></tr>
+<tr><td><code>bet_multiples</code></td><td>VARCHAR(200)</td><td>NOT NULL</td><td> </td><td>押注乘數<br />slot使用<br />逗點分隔的int字串</td></tr>
+<tr><td><code>bet_unit</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>押注單位\<br />slot使用\<br />bet_unit x bet_multiple x line = total bet</td></tr>
+<tr><td><code>room_num</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>預開的房間數</td></tr>
+<tr><td><code>seat_num</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>預開的座位數</td></tr>
+<tr><td><code>flag</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>旗標<br />每一個bit表示一個開關<br />0: 遊戲是否開放</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>game_id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="game_class"> Table: <code>game_class</code></h2>
+
+<h3>Description:</h3>
+
+<p>遊戲類別</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>game_class_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>遊戲類別ID</td></tr>
+<tr><td><code>game_class_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>遊戲類別名稱</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>game_class_id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="game_type"> Table: <code>game_type</code></h2>
+
+<h3>Description:</h3>
+
+<p>遊戲類型<br />類別下的子類型</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>game_class_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>遊戲類別ID</td></tr>
+<tr><td><code>game_type_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>遊戲類型ID</td></tr>
+<tr><td><code>game_type_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>遊戲類型名稱</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>game_class_id</code>, <code>game_type_id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_api"> Table: <code>log_api</code></h2>
+
+<h3>Description:</h3>
+
+<p>api request/response紀錄</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>user_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>帳號ID</td></tr>
+<tr><td><code>api_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
+<tr><td><code>response</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>response內容</td></tr>
+<tr><td><code>timestamp</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_error"> Table: <code>log_error</code></h2>
+
+<h3>Description:</h3>
+
+<p>錯誤紀錄</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>user_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
+<tr><td><code>api_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
+<tr><td><code>response</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>response內容</td></tr>
+<tr><td><code>timestamp</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+<tr><td><code>error_code</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>錯誤碼</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_login"> Table: <code>log_login</code></h2>
+
+<h3>Description:</h3>
+
+<p></p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>account</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>currency</code></td><td>VARCHAR(10)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>game_code</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>game_type</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>timestamp</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_logout"> Table: <code>log_logout</code></h2>
+
+<h3>Description:</h3>
+
+<p></p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>account</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>currency</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>timestatmp</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td> </td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_order"> Table: <code>log_order</code></h2>
+
+<h3>Description:</h3>
+
+<p>轉入轉出紀錄</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>單號</td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>帳號ID</td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>amount</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>金額<br />正數: 轉入錢包<br />負數: 轉出錢包</td></tr>
+<tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>操作完後的餘額</td></tr>
+<tr><td><code>order_status</code></td><td>TINYINT</td><td>NOT NULL</td><td> </td><td>交易狀態<br />0: 成功<br />1: 餘額不足</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_slot_bet"> Table: <code>log_slot_bet</code></h2>
+
+<h3>Description:</h3>
+
+<p>slot的注單<br />一局會有一個注單</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
+<tr><td><code>player_code</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>玩家代碼<br />cq9用</td></tr>
+<tr><td><code>game_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲ID</td></tr>
+<tr><td><code>round_id</code></td><td>BIGINT</td><td>NOT NULL, UNIQUE</td><td> </td><td>局ID</td></tr>
+<tr><td><code>bet</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>押注</td></tr>
+<tr><td><code>win</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>贏的金額</td></tr>
+<tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>計算完bet、win後的餘額</td></tr>
+<tr><td><code>fg_times</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>free game次數</td></tr>
+<tr><td><code>ld_times</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>lucky draw次數</td></tr>
+<tr><td><code>bg_times</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>bonus game次數</td></tr>
+<tr><td><code>bet_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>押注時間</td></tr>
+<tr><td><code>end_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>結算時間</td></tr>
+<tr><td><code>status</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>注單狀態<br />cq9用<br />0: 押注成功<br />1: win api失敗<br />2: win api成功<br />3: end api 成功<br />4: 已補帳</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+<tr><td>round_id_UNIQUE</td><td><code>round_id</code></td><td>UNIQUE</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="log_slot_bet_detail"> Table: <code>log_slot_bet_detail</code></h2>
+
+<h3>Description:</h3>
+
+<p>slot的細單<br />每個spin對應一個細單</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
+<tr><td><code>player_code</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>玩家代碼\<br />cq9用</td></tr>
+<tr><td><code>game_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲ID</td></tr>
+<tr><td><code>round_id</code></td><td>BIGINT</td><td>NOT NULL, UNIQUE</td><td> </td><td>局ID</td></tr>
+<tr><td><code>game_mode</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲模式<br />0: base game<br />1: bonus game<br />2: lucky draw<br />3: free game</td></tr>
+<tr><td><code>spin_serial</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>此局free game spin的流水號</td></tr>
+<tr><td><code>win</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>贏的金額</td></tr>
+<tr><td><code>spin_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>spin的時間</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+<tr><td>round_id_UNIQUE</td><td><code>round_id</code></td><td>UNIQUE</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="operator"> Table: <code>operator</code></h2>
+
+<h3>Description:</h3>
+
+<p>營運商</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>operator_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>operator_code</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>營運商代碼</td></tr>
+<tr><td><code>team_code</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>團隊代碼<br />cq9用</td></tr>
+<tr><td><code>encrypt_key</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>加密金鑰<br />錢包API用</td></tr>
+<tr><td><code>note</code></td><td>VARCHAR(100)</td><td>NOT NULL</td><td> </td><td>說明</td></tr>
+<tr><td><code>is_deleted</code></td><td>SMALLINT</td><td>NOT NULL</td><td> </td><td>邏輯刪除</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>operator_id</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+<h2 id="system_value"> Table: <code>system_value</code></h2>
+
+<h3>Description:</h3>
+
+<p>系統用的key-value</p>
+
+<h3>Columns:</h3>
+
+<table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td><code>skey</code></td><td>VARCHAR(45)</td><td>PRIMARY, NOT NULL</td><td> </td><td>key<br />last_bet_sync_time: 上次注單與cq9同步的時間<br />slot_round_id: slot的round id, 當作除注單round id外的另一個備援資料</td></tr>
+<tr><td><code>svalue</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>value</td></tr>
+</tbody></table>
+
+<h3>Indexes:</h3>
+
+<table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
+
+<tr><td>PRIMARY</td><td><code>skey</code></td><td>PRIMARY</td><td> </td></tr>
+</tbody></table><a href="#d1_doc_gen_contents">To contents</a>
+
+</body></html>
