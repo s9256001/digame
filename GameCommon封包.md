@@ -15,7 +15,7 @@ Game Common 封包
 		- GameToken string // 遊戲 token
 		- Result    int    // 結果 (錯誤碼)
 		- GameID    int    // 遊戲 ID
-		- Money     int64  // 金額
+		- Balance   int64  // 金額
 0. **離開遊戲**
 	- CtoGLeaveGame
 		- Code int // 1006

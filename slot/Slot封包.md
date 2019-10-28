@@ -89,5 +89,5 @@ Slot 封包<span id="標題"></span>
 		- // 前端局表演完, 發送此封包, Server 判定局結束, 此時錢才真的記入 DB (CQ9 要求此時才查的到錢)
 	- GtoCSlotRoundEnd
 		- Code int // 11011
-		- Result int   // 結果 (錯誤碼)
-		- Money  int64 // 金額
+		- Result  int   // 結果 (錯誤碼)
+		- Balance int64 // 金額
