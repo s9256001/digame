@@ -1,5 +1,12 @@
 Game Common 封包
 =========================
+0. **心跳包**
+	- // 請每 10 秒 ping 一次 server, 超過 30 秒未收到 ping 視為斷線
+	- // server 收到 ping 後, 會回給 client pong 封包
+	- CtoGPing
+		- Code int
+	- GtoCPong
+		- Code int
 0. **遊戲錯誤**
 	- GtoCGameError
 		- Code int
@@ -40,8 +47,8 @@ Game Common 封包
 		- Balance int64 // 金額
 0. **列舉**
 	- 封包編號
-		- CtoGPing          = -1   // 請每 10 秒 ping 一次 server, 超過 30 秒未收到 ping 視為斷線
-		- GtoCPong          = -2   // server 收到 ping 後, 會回給 client pong 封包
+		- CtoGPing          = -1
+		- GtoCPong          = -2
 		- GtoCGameError     = 1001
 		- CtoGJoinGame      = 1002
 		- GtoCJoinGame      = 1005
