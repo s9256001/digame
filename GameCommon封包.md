@@ -4,6 +4,9 @@ Game Common 封包
 	- GtoCGameError
 		- Code int
 		- ErrorReason int // 錯誤原因
+	- 錯誤原因
+		- 0: None
+		- 1: IdleForceClose
 0. **加入遊戲**
 	- CtoGJoinGame
 		- Code int

@@ -36,6 +36,7 @@ Slot 封包<span id="標題"></span>
 		- WinOrg      uint64    // 未乘線倍數之前的贏分
 		- Win         uint64    // 贏分
 		- WinType     uint8     // <a href="#中獎類型">中獎類型</a>
+		- Odds        uint64    // 賠率
 	- SSlotSpinInfo
 		- WinType        uint8              // <a href="#中獎類型">中獎類型</a>
 		- Multiplier     uint64             // 倍數
