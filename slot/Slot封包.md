@@ -30,7 +30,7 @@ Slot 封包<span id="標題"></span>
 		- SymbolID    uint8     // <a href="#圖標編號">圖標編號</a>
 		- SymbolType  uint8     // <a href="#圖標類型">圖標類型</a>
 		- SymbolCount uint8     // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
-		- WayeCount   uint64    // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
+		- WayCount    uint64    // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
 		- WinPosition [][]int   // 贏分位置索引的列表: 位置為 column-major
 		- Multiplier  uint64    // 線倍數
 		- WinOrg      uint64    // 未乘線倍數之前的贏分 (錢)
@@ -60,6 +60,7 @@ Slot 封包<span id="標題"></span>
 		- 0: Success
 		- 1: Failed
 		- 2: InvalidRoomState
+		- 3: InvalidBetMultiple
 0. **Bonus Game Play**<span id="Bonus Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotBGPlay
 		- Code int
