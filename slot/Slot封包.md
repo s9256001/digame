@@ -26,7 +26,7 @@ Slot 封包<span id="標題"></span>
 		- Code int
 		- BetMultiple int // 押注乘數
 	- SSlotWinLineInfo
-		- LineNo      uint8     // 線號 1-based; line game 用
+		- LineNo      uint8     // 線號 (1-based); line game 用
 		- SymbolID    uint8     // <a href="#圖標編號">圖標編號</a>
 		- SymbolType  uint8     // <a href="#圖標類型">圖標類型</a>
 		- SymbolCount uint8     // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
