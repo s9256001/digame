@@ -33,8 +33,8 @@ Slot 封包<span id="標題"></span>
 		- WayeCount   uint64    // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
 		- WinPosition [][]int   // 贏分位置索引的列表: 位置為 column-major
 		- Multiplier  uint64    // 線倍數
-		- WinOrg      uint64    // 未乘線倍數之前的贏分
-		- Win         uint64    // 贏分
+		- WinOrg      uint64    // 未乘線倍數之前的贏分 (錢)
+		- Win         uint64    // 贏分 (錢)
 		- WinType     uint8     // <a href="#中獎類型">中獎類型</a>
 		- Odds        uint64    // 賠率
 	- SSlotSpinInfo
@@ -67,6 +67,7 @@ Slot 封包<span id="標題"></span>
 		- Code int
 		- Result    int                  // 結果 (錯誤碼)
 		- BGOptions [][]SSlotOptionValue // BG 選項列表; 第一維為第幾次選擇, 一次選擇內可以選出多個複合值的組合
+		- Wins      []int64              // BG 贏分列表 (錢)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
