@@ -25,7 +25,7 @@ Game Common 封包
 		- GameToken string // 遊戲 token
 		- Result    int    // 結果 (錯誤碼)
 		- GameID    int    // 遊戲 ID
-		- Balance   int64  // 金額
+		- Balance   int64  // 金額 (錢)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
@@ -44,7 +44,7 @@ Game Common 封包
 0. **更新餘額**
 	- GtoCPlayerBalance
 		- Code int
-		- Balance int64 // 金額
+		- Balance int64 // 金額 (錢)
 0. **列舉**
 	- 封包編號
 		- CtoGPing          = -1

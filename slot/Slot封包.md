@@ -20,7 +20,7 @@ Slot 封包<span id="標題"></span>
 		- Denom                 int   // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
 		- Line                  int   // 線數; line game: 線數, way game: 1
 		- BetMultiples          []int // 押注乘數列表
-		- BetUnit               int64 // 押注單位; line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
+		- BetUnit               int64 // 押注單位 (錢); line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
 0. **Base Game Spin**<span id="Base Game Spin"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotNGPlay
 		- Code int
@@ -45,7 +45,7 @@ Slot 封包<span id="標題"></span>
 		- FGTotalTimes   uint8              // FG 總次數
 		- FGCurrentTimes uint8              // FG 目前次數
 		- FGRemainTimes  uint8              // FG 剩餘次數
-		- Win            int64              // 贏分
+		- Win            int64              // 贏分 (錢)
 	- SSlotOptionValue
 		- OptionValueType uint8    // 選項值的類型
 		- SelectedValue   int      // 選到的值 (暗選會用到)
@@ -102,7 +102,7 @@ Slot 封包<span id="標題"></span>
 	- GtoCSlotRoundEnd
 		- Code int
 		- Result  int   // 結果 (錯誤碼)
-		- Balance int64 // 金額
+		- Balance int64 // 金額 (錢)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
