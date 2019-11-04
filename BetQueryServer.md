@@ -19,6 +19,7 @@ BetQueryServer
 		- SymbolResult [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- Win          int64              // 贏分 (錢)
+		- SpinTime     int64              // spin的時間
 	- SCtoSGetBetDetail
 		- RoundID uint64 // 局 ID
 	- SStoCGetBetDetail
@@ -29,4 +30,4 @@ BetQueryServer
 		- BetTime               int64           // 投注時間
 		- EndTime               int64           // 取分時間
 		- NGSpinInfo            SSlotSpinInfo   // NormalGame Spin 資訊
-		- FGSpinInfo            []SSlotSpinInfo // FreeGame Spin 資訊列表
+		- FGSpinInfos           []SSlotSpinInfo // FreeGame Spin 資訊列表
