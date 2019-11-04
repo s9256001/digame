@@ -1,32 +1,32 @@
 BetQueryServer
 =========================
 0. **取得注單明細**
-	- SSlotWinLineInfo
-		- LineNo      uint8     // 線號 (1-based); line game 用
-		- SymbolID    uint8     // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標編號">圖標編號</a>
-		- SymbolType  uint8     // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標類型">圖標類型</a>
-		- SymbolCount uint8     // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
-		- WayCount    uint64    // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
-		- WinPosition [][]bool  // 贏分位置索引的列表; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格; true 為此格有參與贏分
-		- Multiplier  uint64    // 線倍數
-		- Win         uint64    // 贏分 (錢)
-		- WinType     uint8     // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
-		- Odds        uint64    // 賠率
-	- SSlotSpinInfo
-		- WinType        uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
-		- Multiplier     uint64             // 倍數
-		- SymbolResult   [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
-		- WinLineInfos   []SSlotWinLineInfo // 贏線資訊列表
-		- Win            int64              // 贏分 (錢)
 	- /slot/get_bet_detail
-	- request
-		- RoundID uint64
-	- response
-		- GameName string // 遊戲名稱
-		- MoneyFractionMultiple int // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
-		- Bet int64 // 投注 (錢)
-		- Win int64	// 贏分 (錢)
-		- BetTime int64 // 投注時間
-		- EndTime int64// 取分時間
-		- NGSpinInfo SSlotSpinInfo // NormalGame Spin 資訊
-		- FGSpinInfo []SSlotSpinInfo // FreeGame Spin 資訊列表
+	- SSlotWinLineInfo
+		- LineNo      uint8    // 線號 (1-based); line game 用
+		- SymbolID    uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標編號">圖標編號</a>
+		- SymbolType  uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標類型">圖標類型</a>
+		- SymbolCount uint8    // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
+		- WayCount    uint64   // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
+		- WinPosition [][]bool // 贏分位置索引的列表; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格; true 為此格有參與贏分
+		- Multiplier  uint64   // 線倍數
+		- Win         uint64   // 贏分 (錢)
+		- WinType     uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
+		- Odds        uint64   // 賠率
+	- SSlotSpinInfo
+		- WinType      uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
+		- Multiplier   uint64             // 倍數
+		- SymbolResult [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
+		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
+		- Win          int64              // 贏分 (錢)
+	- SCtoSGetBetDetail
+		- RoundID uint64 // 局 ID
+	- SStoCGetBetDetail
+		- GameName              string          // 遊戲名稱
+		- MoneyFractionMultiple int             // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
+		- Bet                   int64           // 投注 (錢)
+		- Win                   int64           // 贏分 (錢)
+		- BetTime               int64           // 投注時間
+		- EndTime               int64           // 取分時間
+		- NGSpinInfo            SSlotSpinInfo   // NormalGame Spin 資訊
+		- FGSpinInfo            []SSlotSpinInfo // FreeGame Spin 資訊列表
