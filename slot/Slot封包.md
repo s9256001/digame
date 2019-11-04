@@ -45,6 +45,7 @@ Slot 封包<span id="標題"></span>
 		- FGTotalTimes   uint8              // FG 總次數
 		- FGCurrentTimes uint8              // FG 目前次數
 		- FGRemainTimes  uint8              // FG 剩餘次數
+		- FGMaxFlag      bool               // FG 達最高上限標記
 		- Win            int64              // 贏分 (錢)
 	- SSlotOptionValue
 		- OptionValueType uint8    // 選項值的類型
