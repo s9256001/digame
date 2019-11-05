@@ -16,7 +16,7 @@ Slot 封包<span id="標題"></span>
 	- GtoCSlotInit
 		- Code int
 		- // GtoCJoinGame 後 Server 會直接送這封包
-		- MoneyFractionMultiple int   // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
+		- MoneyFractionMultiple int   // 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
 		- Denom                 int   // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
 		- Line                  int   // 線數; line game: 線數, way game: 1
 		- BetMultiples          []int // 押注乘數列表
