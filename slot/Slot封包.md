@@ -21,6 +21,7 @@ Slot 封包<span id="標題"></span>
 		- Line                  int   // 線數; line game: 線數, way game: 1
 		- BetMultiples          []int // 押注乘數列表
 		- BetUnit               int64 // 押注單位 (錢); line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
+		- GameTypeID            int   // <a href="#遊戲類型ID">遊戲類型ID</a>
 0. **Base Game Spin**<span id="Base Game Spin"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotNGPlay
 		- Code int
@@ -192,4 +193,6 @@ Slot 封包<span id="標題"></span>
 		- GS_FREEGAME_8   = 18
 		- GS_FREEGAME_9   = 19
 		- GS_BONUSGAME    = 20
-		- GS_FEATURE      = 30
+	- 遊戲類型ID<span id="遊戲類型ID"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- GameSlotTypeIDLine = 1
+		- GameSlotTypeIDWay  = 2
