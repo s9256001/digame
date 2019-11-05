@@ -38,6 +38,7 @@ Slot 封包<span id="標題"></span>
 		- WinType     uint8     // <a href="#中獎類型">中獎類型</a>
 		- Odds        uint64    // 賠率
 	- SSlotSpinInfo
+		- GameState      uint8              // <a href="#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在 normal game 還是 free game
 		- WinType        uint8              // <a href="#中獎類型">中獎類型</a>
 		- Multiplier     uint64             // 倍數
 		- SymbolResult   [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
@@ -169,3 +170,26 @@ Slot 封包<span id="標題"></span>
 		- WT_FREEGAME    WinType = 0x02 // 中FreeGame
 		- WT_BONUSGAME   WinType = 0x04 // 中BonusGame
 		- WT_FEATUREGAME WinType = 0x08 // 其他特殊獎勵
+	- 遊戲狀態<span id="遊戲狀態"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- GS_NORMALGAME   = 0
+		- GS_NORMALGAME_1 = 1
+		- GS_NORMALGAME_2 = 2
+		- GS_NORMALGAME_3 = 3
+		- GS_NORMALGAME_4 = 4
+		- GS_NORMALGAME_5 = 5
+		- GS_NORMALGAME_6 = 6
+		- GS_NORMALGAME_7 = 7
+		- GS_NORMALGAME_8 = 8
+		- GS_NORMALGAME_9 = 9
+		- GS_FREEGAME     = 10
+		- GS_FREEGAME_1   = 11
+		- GS_FREEGAME_2   = 12
+		- GS_FREEGAME_3   = 13
+		- GS_FREEGAME_4   = 14
+		- GS_FREEGAME_5   = 15
+		- GS_FREEGAME_6   = 16
+		- GS_FREEGAME_7   = 17
+		- GS_FREEGAME_8   = 18
+		- GS_FREEGAME_9   = 19
+		- GS_BONUSGAME    = 20
+		- GS_FEATURE      = 30
