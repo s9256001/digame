@@ -1,0 +1,13 @@
+@startuml
+
+control DataServer
+control GameServer
+
+autonumber 1
+GameServer -> DataServer: 連線
+DataServer -> GameServer: 連線成功
+GameServer -> DataServer: SutoMaRegister
+DataServer -> GameServer: MatoSuRegister\n遊戲DB設定
+GameServer -> GameServer: 建立遊戲
+
+@enduml

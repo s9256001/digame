@@ -1,0 +1,18 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+control DataServer
+actor CQ9
+
+autonumber 1
+Client -> GameServer: CtoGJoinGame
+GameServer -> DataServer: GtoDJoinGame
+DataServer -> CQ9: request /player/auth
+CQ9 -> DataServer: response /player/auth
+DataServer -> GameServer: DtoGJoinGame
+GameServer -> Game: 檢查結果\ndispatch DtoGJoinGame
+Game -> Client: GtoCJoinGame
+
+@enduml

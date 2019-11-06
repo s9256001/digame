@@ -1,0 +1,17 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+control DataServer
+actor CQ9
+
+autonumber 1
+Client -> GameServer: CtoGLeaveGame
+GameServer -> Game: dispatch CtoGLeaveGame
+GameServer -> DataServer: GtoDLeaveGame
+Game -> Client: GtoCLeaveGame
+DataServer -> CQ9: request /player/logout
+CQ9 -> DataServer: response /player/logout
+
+@enduml

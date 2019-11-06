@@ -1,0 +1,15 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+control DataServer
+
+autonumber 1
+Client -> GameServer: CtoGJoinGame
+GameServer -> DataServer: GtoDJoinGame
+DataServer -> GameServer: DtoGJoinGame
+GameServer -> Game: 檢查結果\ndispatch DtoGJoinGame
+Game -> Client: GtoCJoinGame
+
+@enduml

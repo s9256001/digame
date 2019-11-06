@@ -1,0 +1,14 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+control DataServer
+
+autonumber 1
+Client -> GameServer: CtoGLeaveGame
+GameServer -> Game: dispatch CtoGLeaveGame
+GameServer -> DataServer: GtoDLeaveGame
+Game -> Client: GtoCLeaveGame
+
+@enduml
