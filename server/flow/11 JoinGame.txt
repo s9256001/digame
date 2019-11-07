@@ -9,8 +9,12 @@ actor CQ9
 autonumber 1
 Client -> GameServer: CtoGJoinGame
 GameServer -> DataServer: GtoDJoinGame
-DataServer -> CQ9: request /player/auth
-CQ9 -> DataServer: response /player/auth
+alt Demo
+
+else CQ9
+	DataServer -> CQ9: request /player/auth
+	CQ9 -> DataServer: response /player/auth
+end
 DataServer -> GameServer: DtoGJoinGame
 GameServer -> Game: 更新玩家資料\ndispatch DtoGJoinGame
 Game -> Client: GtoCJoinGame
