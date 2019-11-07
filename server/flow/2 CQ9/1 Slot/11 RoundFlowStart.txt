@@ -1,0 +1,16 @@
+@startuml
+
+control Game
+control GameServer
+control DataServer
+entity CQ9
+
+autonumber 1
+Game -> GameServer: event SlotRoundFlowStart
+GameServer -> DataServer: GtoDSlotRoundFlowStart
+DataServer -> CQ9: 產生局 ID\nrequest /game/bet
+CQ9 -> DataServer: response /game/bet
+DataServer -> GameServer: 建立注單, 更新餘額\nDtoGSlotRoundFlowStart
+GameServer -> Game: 更新餘額\ndispatch DtoGSlotRoundFlowStart
+
+@enduml

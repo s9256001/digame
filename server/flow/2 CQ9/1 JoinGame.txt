@@ -12,7 +12,7 @@ GameServer -> DataServer: GtoDJoinGame
 DataServer -> CQ9: request /player/auth
 CQ9 -> DataServer: response /player/auth
 DataServer -> GameServer: DtoGJoinGame
-GameServer -> Game: 檢查結果\ndispatch DtoGJoinGame
+GameServer -> Game: 更新玩家資料\ndispatch DtoGJoinGame
 Game -> Client: GtoCJoinGame
 
 @enduml

@@ -1,0 +1,13 @@
+@startuml
+
+control Game
+control GameServer
+control DataServer
+
+autonumber 1
+Game -> GameServer: event SlotRoundFlowResult
+GameServer -> DataServer: GtoDSlotRoundFlowResult
+DataServer -> GameServer: 更新注單贏分, 建立細單, 更新餘額\nDtoGSlotRoundFlowResult
+GameServer -> Game: 更新餘額\ndispatch DtoGSlotRoundFlowResult
+
+@enduml

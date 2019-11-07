@@ -1,0 +1,17 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+
+autonumber 1
+Client -> Game: CtoGSlotNGPlay
+Game -> GameServer: 一局開始\nevent SlotRoundFlowStart
+...
+GameServer -> Game: dispatch DtoGSlotRoundFlowStart
+Game -> GameServer: Spin\nevent SlotRoundFlowResult
+...
+GameServer -> Game: dispatch DtoGSlotRoundFlowResult
+Game -> Client: 更新餘額\nGtoCSlotNGPlay
+
+@enduml

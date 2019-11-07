@@ -1,0 +1,15 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+
+autonumber 1
+GameServer -> Game: DtoGJoinGame
+Game -> Client: GtoCJoinGame\nGtoCSlotInit
+...
+autonumber 1
+GameServer -> Game: CtoGLeaveGame
+Game -> Client: GtoCLeaveGame
+
+@enduml
