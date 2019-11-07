@@ -1,0 +1,14 @@
+@startuml
+
+actor Client
+control Game
+control GameServer
+
+autonumber 1
+Client -> Game: CtoGSlotFGPlay
+Game -> GameServer: event SlotRoundFlowResult
+...
+GameServer -> Game: dispatch DtoGSlotRoundFlowResult
+Game -> Client: 更新餘額\nGtoCSlotFGPlay
+
+@enduml
