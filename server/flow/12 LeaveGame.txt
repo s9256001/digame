@@ -9,8 +9,10 @@ actor CQ9
 autonumber 1
 Client -> GameServer: CtoGLeaveGame
 GameServer -> Game: dispatch CtoGLeaveGame
-GameServer -> DataServer: GtoDLeaveGame
 Game -> Client: GtoCLeaveGame
+...
+Game -> GameServer: 遊戲結束可以離開\nevent LeaveGame
+GameServer -> DataServer: GtoDLeaveGame
 alt Demo
 
 else CQ9
