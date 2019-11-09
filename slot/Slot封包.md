@@ -32,7 +32,7 @@ Slot 封包<span id="標題"></span>
 		- SymbolType  uint8     // <a href="#圖標類型">圖標類型</a>
 		- SymbolCount uint8     // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
 		- WayCount    uint64    // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
-		- WinPosition [][]int   // 贏分位置索引的列表; 位置索引由 [x, y] 表示, x 為第幾軸, y 為由上到下第幾格
+		- WinPosition [][]int   // 贏分位置的列表; 第一維為有幾個贏分位置, 第二維為 [x, y] 座標表示, x 為第幾軸, y 為由上到下第幾格
 		- Multiplier  uint64    // 線倍數
 		- WinOrg      uint64    // 未乘線倍數之前的贏分 (錢)
 		- Win         uint64    // 贏分 (錢)

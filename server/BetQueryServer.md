@@ -8,26 +8,38 @@ BetQueryServer
 		- SymbolType  uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標類型">圖標類型</a>
 		- SymbolCount uint8    // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
 		- WayCount    uint64   // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
-		- WinPosition [][]bool // 贏分位置索引的列表; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格; true 為此格有參與贏分
+		- WinPosition [][]int  // 贏分位置的列表; 第一維為有幾個贏分位置, 第二維為 [x, y] 座標表示, x 為第幾軸, y 為由上到下第幾格
 		- Multiplier  uint64   // 線倍數
 		- Win         uint64   // 贏分 (錢)
 		- WinType     uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
 		- Odds        uint64   // 賠率
+	- SSlotOptionValue
+		- OptionValueType uint8    // 選項值的類型
+		- SelectedValue   int      // 選到的值 (暗選會用到)
+		- OtherValues     []int    // 其他的值列表 (暗選時前端需自己打亂)
+	- SSlotOptionInfo
+		- bonus game、lucky draw 時 SSlotSpinDetail.Info 的結構
+		- Options []SSlotOptionValue // 選項
 	- SSlotSpinInfo
+		- normal game、free game 時 SSlotSpinDetail.Info 的結構
 		- WinType      uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
 		- Multiplier   uint64             // 倍數
 		- SymbolResult [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- Win          int64              // 贏分 (錢)
 		- SpinTime     int64              // spin的時間
+	- SSlotSpinDetail
+		- GameState uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在 normal game 還是 free game
+		- Win       int64       // 贏分 (錢)
+		- SpinTime  int64       // spin的時間
+		- Info      interface{} // 資訊; normal game、free game 為 SSlotSpinInfo, bonus game、lucky draw 為 SSlotOptionInfo
 	- SCtoSGetBetDetail
 		- RoundID uint64 // 局 ID
 	- SStoCGetBetDetail
-		- GameName              string          // 遊戲名稱
-		- MoneyFractionMultiple int             // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
-		- Bet                   int64           // 投注 (錢)
-		- Win                   int64           // 贏分 (錢)
-		- BetTime               int64           // 投注時間
-		- EndTime               int64           // 取分時間
-		- NGSpinInfo            SSlotSpinInfo   // NormalGame Spin 資訊
-		- FGSpinInfos           []SSlotSpinInfo // FreeGame Spin 資訊列表
+		- GameName              string            // 遊戲名稱
+		- MoneyFractionMultiple int               // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
+		- Bet                   int64             // 投注 (錢)
+		- Win                   int64             // 贏分 (錢)
+		- BetTime               int64             // 投注時間
+		- EndTime               int64             // 取分時間
+		- SpinDetails           []SSlotSpinDetail // Spin 明細列表
