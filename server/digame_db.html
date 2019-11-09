@@ -138,7 +138,7 @@
 <tr><td><code>game_type_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲類型ID<br />類別下的子類型</td></tr>
 <tr><td><code>line</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>線數<br />slot使用</td></tr>
 <tr><td><code>bet_multiples</code></td><td>VARCHAR(200)</td><td>NOT NULL</td><td> </td><td>押注乘數<br />slot使用<br />逗點分隔的int字串</td></tr>
-<tr><td><code>bet_unit</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>押注單位\<br />slot使用\<br />bet_unit x bet_multiple x line = total bet</td></tr>
+<tr><td><code>bet_unit</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>押注單位<br />slot使用<br />bet_unit x bet_multiple x line = total bet</td></tr>
 <tr><td><code>room_num</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>預開的房間數</td></tr>
 <tr><td><code>seat_num</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>預開的座位數</td></tr>
 <tr><td><code>flag</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>旗標<br />每一個bit表示一個開關<br />0: 遊戲是否開放</td></tr>
@@ -207,10 +207,9 @@
 <tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
 <tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
 <tr><td><code>user_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
-<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>帳號ID</td></tr>
 <tr><td><code>api_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
 <tr><td><code>response</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>response內容</td></tr>
-<tr><td><code>timestamp</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 </tbody></table>
 
 <h3>Indexes:</h3>
@@ -235,7 +234,7 @@
 <tr><td><code>user_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
 <tr><td><code>api_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
 <tr><td><code>response</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>response內容</td></tr>
-<tr><td><code>timestamp</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 <tr><td><code>error_code</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>錯誤碼</td></tr>
 </tbody></table>
 
@@ -370,12 +369,14 @@
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
 <tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
-<tr><td><code>player_code</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>玩家代碼\<br />cq9用</td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>帳號ID</td></tr>
+<tr><td><code>player_code</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>玩家代碼<br />cq9用</td></tr>
 <tr><td><code>game_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲ID</td></tr>
 <tr><td><code>round_id</code></td><td>BIGINT</td><td>NOT NULL, UNIQUE</td><td> </td><td>局ID</td></tr>
 <tr><td><code>game_mode</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>遊戲模式<br />0: base game<br />1: bonus game<br />2: lucky draw<br />3: free game</td></tr>
-<tr><td><code>spin_serial</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>此局free game spin的流水號</td></tr>
+<tr><td><code>spin_serial</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>此局一輪中bonus game play、lucky draw play、free game spin的流水號</td></tr>
 <tr><td><code>win</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>贏的金額</td></tr>
+<tr><td><code>detail</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td> </td></tr>
 <tr><td><code>spin_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>spin的時間</td></tr>
 </tbody></table>
 
@@ -422,7 +423,7 @@
 
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
-<tr><td><code>skey</code></td><td>VARCHAR(45)</td><td>PRIMARY, NOT NULL</td><td> </td><td>key<br />last_bet_sync_time: 上次注單與cq9同步的時間<br />slot_round_id: slot的round id, 當作除注單round id外的另一個備援資料</td></tr>
+<tr><td><code>skey</code></td><td>VARCHAR(45)</td><td>PRIMARY, NOT NULL</td><td> </td><td>key<br />last_bet_sync_time: 上次注單與cq9同步的時間<br />slot_round_id: slot的round id, 當作除注單round id外的另一個備援資料<br />money_fraction_multiple: 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位</td></tr>
 <tr><td><code>svalue</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>value</td></tr>
 </tbody></table>
 
