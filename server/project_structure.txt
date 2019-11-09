@@ -1,0 +1,59 @@
+digame
+  ├─base
+  │  ├─gapiclientpkg
+  │  ├─geventsubjectpkg
+  │  ├─ggamepkg
+  │  ├─ghandlerpkg
+  │  ├─gifpkg
+  │  ├─gloggerpkg
+  │  ├─gnodepkg
+  │  ├─gpacketpkg
+  │  ├─gpeerpkg
+  │  ├─gserverpkg
+  │  ├─gtaskpkg
+  │  ├─gutilpkg
+  │  └─math
+  │      ├─datastructure
+  │      ├─gslotmathmgrpkg
+  │      ├─gslotmathpkg
+  │      └─privatelib
+  ├─game
+  │  ├─dummygame
+  │  ├─gamecompkg
+  │  └─slotpkg
+  ├─gamesimulator
+  │  ├─gamesimpkg
+  │  └─slotsimulator
+  │      └─slotsimpkg
+  ├─math
+  │  ├─mathbn06pkg
+  │  └─yihungyuanmathpkg
+  ├─server
+  │  ├─betquery
+  │  │  └─serverpkg
+  │  ├─betsync
+  │  │  └─serverpkg
+  │  ├─common
+  │  │  ├─dbagentpkg
+  │  │  ├─packetpkg
+  │  │  ├─platform
+  │  │  │  ├─apibetdetailpkg
+  │  │  │  ├─apicompkg
+  │  │  │  └─cq9apipkg
+  │  │  ├─redisagentpkg
+  │  │  ├─srvbasepkg
+  │  │  ├─srvcompkg
+  │  │  └─srvloggerpkg
+  │  ├─dataserver
+  │  │  └─serverpkg
+  │  ├─dummyserver
+  │  │  └─serverpkg
+  │  └─gameserver
+  │      └─serverpkg
+  ├─wallet
+  │  ├─common
+  │  │  └─apipkg
+  │  └─wallet
+  │      └─serverpkg
+  └─_script
+      └─bin
