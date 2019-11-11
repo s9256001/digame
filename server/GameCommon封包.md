@@ -19,12 +19,15 @@ Game Common 封包
 		- Code int
 		- GameToken string // 遊戲 token; Demo 不會用到此欄位
 		- GameID    int    // 客端對應的遊戲 ID; 防止 GameToken 貼在不同遊戲網頁的錯誤
+		- DemoOn    bool   // 是否開啟 demo 腳本模式
 		- // 若 Server 比對 GameID 不合, 將回傳加入遊戲錯誤並切斷連線
 	- GtoCJoinGame
 		- Code int
 		- GameToken string // 遊戲 token
 		- Result    int    // 結果 (錯誤碼)
 		- GameID    int    // 遊戲 ID
+		- AccountID uint32 // 帳號 ID
+		- DemoOn    bool   // 是否開啟 demo 腳本模式
 		- Balance   int64  // 金額 (錢)
 	- 錯誤碼
 		- 0: Success
