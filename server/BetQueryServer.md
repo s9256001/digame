@@ -34,7 +34,7 @@ BetQueryServer
 		- SpinTime  int64       // spin的時間
 		- Info      interface{} // 資訊; normal game、free game 為 SSlotSpinInfo, bonus game、lucky draw 為 SSlotOptionInfo
 	- SCtoSGetBetDetail
-		- RoundID uint64 // 局 ID
+		- RoundCode string // 局號
 	- SStoCGetBetDetail
 		- GameName              string            // 遊戲名稱
 		- MoneyFractionMultiple int               // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
