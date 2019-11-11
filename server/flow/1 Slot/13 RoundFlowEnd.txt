@@ -13,7 +13,7 @@ alt Demo
 else CQ9
 	DataServer -> CQ9: request /game/win
 	CQ9 -> DataServer: response /game/win
-	DataServer -> CQ9: 更新注單\nrequest /game/end
+	DataServer -> CQ9: 更新餘額, 更新注單\nrequest /game/end
 	CQ9 -> DataServer: response /game/end
 	DataServer -> GameServer: 更新餘額, 更新注單\nDtoGSlotRoundFlowEnd
 end
