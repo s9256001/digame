@@ -43,6 +43,7 @@ Slot 封包<span id="標題"></span>
 		- WinType        uint8              // <a href="#中獎類型">中獎類型</a>
 		- Multiplier     uint64             // 倍數
 		- SymbolResult   [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
+		- ScreenOutput   [][]int            // 盤面輸出資訊, 供下次 spin 使用; 如 free game 的 lock wilds 盤面資訊
 		- WinLineInfos   []SSlotWinLineInfo // 贏線資訊列表
 		- FGTotalTimes   uint8              // FG 總次數
 		- FGCurrentTimes uint8              // FG 目前次數

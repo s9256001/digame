@@ -25,6 +25,7 @@ BetQueryServer
 		- WinType      uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
 		- Multiplier   uint64             // 倍數
 		- SymbolResult [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
+		- ScreenOutput [][]int            // 盤面輸出資訊, 供下次 spin 使用; 如 free game 的 lock wilds 盤面資訊
 		- WinLineInfos []SSlotWinLineInfo // 贏線資訊列表
 		- Win          int64              // 贏分 (錢)
 		- SpinTime     int64              // spin的時間
