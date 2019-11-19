@@ -10,11 +10,13 @@ FGPlay : FG 表演\n[CtoGSlotFGPlay]
 RoundEnd : 局結束\n[CtoGSlotRoundEnd]
 
 [*] --> Init
-Init --> NGPlay: 玩家加入遊戲
+Init --> NGPlay : 玩家加入遊戲
+NGPlay --> NGPlay : 消去/respin
 NGPlay --> RoundEnd : 沒中 BG、FG
 NGPlay --> BGPlay : 中 BG
 NGPlay --> LDPlay : 中 FG, 有 LD
 NGPlay --> FGPlay : 中 FG, 沒 LD
+FGPlay --> NGPlay : NG 消去/respin 未表演完
 
 BGPlay --> RoundEnd : BG 表演完, 結束
 
