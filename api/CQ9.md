@@ -69,7 +69,7 @@ CQ9
 	- gamepool/cq9/game/detailtoken
 		- 驗證與解析細單 Token
 	- gamepool/cq9/game/getorder
-		- 取得注單資訊
+		- 取得注單資訊 (補單完成後這一隻會查的到)
 0. **例外 API**
 	- gamepool/cq9/order/debit
 		- 注單補扣款
