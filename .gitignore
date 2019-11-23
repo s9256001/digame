@@ -1,0 +1,5 @@
+# https://github.com/github/gitignore/blob/master/Go.gitignore
+deploy/Deploy/*
+deploy/Server/*
+!deploy/Deploy/.gitkeep
+!deploy/Server/.gitkeep
