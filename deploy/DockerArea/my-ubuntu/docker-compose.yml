@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  my-ubuntu:
+    image: quantumobject/docker-baseimage:latest
+    container_name: my-ubuntu
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server:/root/Server
+      - ../../Deploy:/root/Deploy
+      - ../../SetupScript:/root/SetupScript
+    working_dir: /root
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "apt update && /sbin/my_init"]

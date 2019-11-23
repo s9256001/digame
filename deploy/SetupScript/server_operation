@@ -1,0 +1,72 @@
+#!/bin/bash
+source script_lib
+
+# $1: gitlabURL
+function server_clone()
+{
+	echo 'clone server...'
+
+	pushd $PWD
+	cd ../Server
+	git clone $1/digame/src/server.git src/server
+	git clone $1/digame/env.git env
+	popd
+}
+function server_pull()
+{
+	echo 'pull server...'
+	
+	pushd $PWD
+	cd ../Server/src/server
+	git checkout -- ./src/digame/go.mod
+	git pull
+	cd ../../env
+	git pull
+	popd
+}
+function server_build()
+{
+	echo 'build server...'
+	
+	pushd $PWD
+	cd ../Server/src/server/src/digame
+	envPath=../../../../env/server/linux
+	export GO111MODULE=on
+	
+	go build -o $envPath/dataserver/server.out server/dataserver/main.go
+	go build -o $envPath/gameserver/server.out server/gameserver/main.go
+	go build -o $envPath/betsync/server.out server/betsync/main.go
+	go build -o $envPath/betquery/server.out server/betquery/main.go
+	popd
+	
+	pushd $PWD
+	cd ../Server/src/server/src/digame
+	envPath=../../../../env/wallet/linux
+	export GO111MODULE=on
+	
+	go build -o $envPath/wallet/server.out wallet/wallet/main.go
+	popd
+}
+function server_commit()
+{
+	echo 'commit server...'
+	
+	pushd $PWD
+	cd ../Server/env
+	commit_comment="[src] add. linux server 上版"
+	askDefault "commit comment" "commit_comment"
+	printf -v commit_comment_escape %b "$commit_comment"
+	git add *.out
+	git commit -m "$commit_comment_escape"
+	git push origin master
+	popd
+}
+# $1: pem, $2: dstURL
+function server_deploy()
+{
+	echo 'deploy server...'
+	
+	envPath=../Server/env
+	scp -i $1 -r $envPath/server/linux/* $2/Server/server/
+	scp -i $1 -r $envPath/wallet/linux/* $2/Server/wallet/
+}

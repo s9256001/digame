@@ -1,0 +1,38 @@
+#!/bin/bash
+source script_lib
+
+# $1: gitlabEmail, $2: gitlabUser
+function install_git()
+{
+	echo 'install git client...'
+	
+	apt -y install git
+	apt -y install git-lfs
+	
+	git config --global core.autocrlf false
+	git config --global user.email "$1"
+	git config --global user.name "$2"
+	
+	printc C_YELLOW '%s\n' "$(git version)"
+}
+# $1: goVersion
+function install_golang()
+{
+	echo 'install golang...'
+	
+	if type go >/dev/null 2>&1; then
+		echo 'already installed'
+		return
+	fi
+	
+	wget https://dl.google.com/go/$1.linux-amd64.tar.gz
+	tar -xzf $1.linux-amd64.tar.gz
+	mv go /usr/local
+	rm -f $1.linux-amd64.tar.gz
+	
+	f=~/.bashrc
+	file_append $f 'export GOROOT=/usr/local/go'
+	file_append $f 'export PATH=$GOROOT/bin:$PATH'
+	
+	printc C_YELLOW 'you must relogin to export the environment variable\n'
+}

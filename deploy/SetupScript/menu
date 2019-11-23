@@ -1,0 +1,44 @@
+#!/bin/bash
+source install_tool
+
+# $1: menuName, $2: commands, $3: descriptions, $4: funcs
+# return: 0: repeat, 1: exit
+function menu()
+{
+	printc C_GREEN "================================================================\n"
+	printc C_GREEN "= $1"
+	printc C_WHITE " (time: $(date '+%Y-%m-%d %H:%M:%S'))\n"
+	printc C_GREEN "================================================================\n"
+	for i in "${!__commands[@]}"; do
+		printc C_CYAN "  ${__commands[$i]}. ${__descriptions[$i]}\n"
+	done
+	printc C_CYAN "  q. Exit\n"
+	
+	read -p "Please Select:" cmd
+	if [[ $cmd == [Qq]* ]]; then
+		return 1
+	fi
+	findCmd=false
+	for i in "${!__commands[@]}"; do
+		if [[ $cmd == ${__commands[$i]} ]]; then
+			eval ${__funcs[$i]}
+			findCmd=true
+			break
+		fi
+	done
+	if [[ $findCmd == false ]]; then
+		echo "Please enter valid number or q to exit."
+	fi
+	return 0
+}
+# $1: menuName, $2: commands, $3: descriptions, $4: funcs
+function menu_loop()
+{
+	local -n __commands=$2
+	local -n __descriptions=$3
+	local -n __funcs=$4
+	
+	while menu "$1" __commands __descriptions __funcs; do
+		echo
+	done
+}

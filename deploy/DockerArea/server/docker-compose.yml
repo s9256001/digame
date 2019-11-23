@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  dataserver:
+    image: golang:1.12.9
+    container_name: dataserver
+    init: true
+    ports:
+      - "12101:12101"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server/server:/server
+    working_dir: /server/dataserver
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "./server.out"]
+  gameserver:
+    image: golang:1.12.9
+    container_name: gameserver
+    depends_on:
+      - dataserver
+    init: true
+    ports:
+      - "12201:12201"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server/server:/server
+    working_dir: /server/gameserver
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "./server.out"]
+  wallet:
+    image: golang:1.12.9
+    container_name: wallet
+    init: true
+    ports:
+      - "13101:13101"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server/wallet:/wallet
+    working_dir: /wallet/wallet
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "./server.out"]
+      
