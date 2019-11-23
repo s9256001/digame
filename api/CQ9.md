@@ -80,4 +80,4 @@ CQ9
 		- 幣別列表
 0. **其他 API**
 	- gamepool/cq9/game/playerorder
-		- 注單網址
+		- 注單網址 (不登出遊戲便可使用此 game token)
