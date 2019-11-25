@@ -11,8 +11,8 @@ services:
       - MYSQL_ROOT_PASSWORD=asdf5678
     volumes:
       - ./config:/etc/mysql/conf.d
-      - ./data:/var/lib/mysql
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ../../Storage/my-mysql/data:/var/lib/mysql
     security_opt:
       - seccomp:unconfined
       
