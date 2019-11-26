@@ -71,6 +71,7 @@ cq9待同步注單的資料
 | `mtcode` | VARCHAR(255) | Not null |   | 交易代碼 |
 | `round_code` | VARCHAR(255) | Not null |   | 局號 |
 | `round_id` | BIGINT | Not null |   | 局ID |
+| `log_bet_status` | INT | Not null |   | 處理前的注單狀態<br />cq9用<br />0: 押注成功<br />1: win api失敗<br />2: win api成功<br />3: end api 成功<br />4: 已補帳 |
 | `status` | INT | Not null |   | 注單狀態<br />0: 待sync<br />1: 處理完畢 |
 | `create_time` | BIGINT | Not null |   | 建立時間 |
 | `done_time` | BIGINT | Not null |   | 完成時間 |
@@ -125,6 +126,7 @@ cq9待同步注單的資料
 | `bet_unit` | BIGINT | Not null |   | 押注單位<br />slot使用<br />bet_unit x bet_multiple x line = total bet |
 | `room_num` | INT | Not null |   | 預開的房間數 |
 | `seat_num` | INT | Not null |   | 預開的座位數 |
+| `rtp` | INT | Not null |   | 預設的 rtp |
 | `flag` | BIGINT | Not null |   | 旗標<br />每一個bit表示一個開關<br />0: 遊戲是否開放 |
 
 
@@ -154,6 +156,28 @@ cq9待同步注單的資料
 | Name | Columns | Type | Description |
 | --- | --- | --- | --- |
 | PRIMARY | `game_class_id` | PRIMARY |   |
+
+
+## Table: `game_stat`
+
+### Description: 
+
+遊戲統計
+
+### Columns: 
+
+| Column | Data type | Attributes | Default | Description |
+| --- | --- | --- | --- | ---  |
+| `game_id` | INT | PRIMARY, Not null |   | 遊戲ID |
+| `total_bet` | BIGINT | Not null |   | 總押注 |
+| `total_win` | BIGINT | Not null |   | 總贏的金額 |
+
+
+### Indices: 
+
+| Name | Columns | Type | Description |
+| --- | --- | --- | --- |
+| PRIMARY | `game_id` | PRIMARY |   |
 
 
 ## Table: `game_type`
@@ -233,21 +257,28 @@ api request/response紀錄
 
 ### Description: 
 
-
+登入資訊
 
 ### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
-| `id` | BIGINT | PRIMARY, Auto increments, Not null |   |   |
-| `account_id` | INT | Not null |   |   |
-| `account` | VARCHAR(255) | Not null |   |   |
-| `balance` | BIGINT | Not null |   |   |
-| `currency` | VARCHAR(10) | Not null |   |   |
-| `game_code` | VARCHAR(45) | Not null |   |   |
-| `operator_id` | INT | Not null |   |   |
-| `game_type` | VARCHAR(45) | Not null |   |   |
-| `timestamp` | BIGINT | Not null |   |   |
+| `id` | BIGINT | PRIMARY, Auto increments, Not null |   | 流水號 |
+| `account_id` | INT | Not null |   | 帳號ID |
+| `player_code` | VARCHAR(255) | Not null |   | 玩家代碼<br />cq9用 |
+| `user_name` | VARCHAR(255) | Not null |   | 使用者名稱 |
+| `game_token` | VARCHAR(255) | Not null |   | 遊戲token |
+| `game_id` | INT | Not null |   | 遊戲ID |
+| `blance` | BIGINT | Not null |   | 餘額 |
+| `currency_id` | INT | Not null |   | 貨幣ID |
+| `game_hall` | VARCHAR(255) | Not null |   | 遊戲廠商<br />cq9用 |
+| `game_platform` | VARCHAR(255) | Not null |   | 遊戲平台<br />cq9用 |
+| `game_tech` | VARCHAR(255) | Not null |   | 使用技術<br />cq9用 |
+| `game_type` | VARCHAR(255) | Not null |   | 遊戲類型<br />cq9用 |
+| `parent_code` | VARCHAR(255) | Not null |   | 代理ID<br />cq9用 |
+| `owner_code` | VARCHAR(255) | Not null |   | 上層代理ID<br />cq9用 |
+| `login_ip` | VARCHAR(255) | Not null |   | 登入IP |
+| `create_time` | BIGINT | Not null |   | 建立時間 |
 
 
 ### Indices: 
@@ -261,18 +292,19 @@ api request/response紀錄
 
 ### Description: 
 
-
+登出資訊
 
 ### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
-| `id` | BIGINT | PRIMARY, Auto increments, Not null |   |   |
-| `account_id` | INT | Not null |   |   |
-| `account` | VARCHAR(255) | Not null |   |   |
-| `balance` | BIGINT | Not null |   |   |
-| `currency` | VARCHAR(45) | Not null |   |   |
-| `timestatmp` | BIGINT | Not null |   |   |
+| `id` | BIGINT | PRIMARY, Auto increments, Not null |   | 流水號 |
+| `account_id` | INT | Not null |   | 帳號ID |
+| `player_code` | VARCHAR(255) | Not null |   | 玩家代碼<br />cq9用 |
+| `game_token` | VARCHAR(255) | Not null |   | 遊戲token |
+| `game_id` | INT | Not null |   | 遊戲ID |
+| `blance` | BIGINT | Not null |   | 餘額 |
+| `create_time` | BIGINT | Not null |   | 建立時間 |
 
 
 ### Indices: 
@@ -295,6 +327,7 @@ api request/response紀錄
 | `id` | BIGINT | PRIMARY, Auto increments, Not null |   | 單號 |
 | `account_id` | INT | Not null |   | 帳號ID |
 | `operator_id` | INT | Not null |   | 營運商ID |
+| `order_id` | VARCHAR(50) | Not null |   |   |
 | `amount` | BIGINT | Not null |   | 金額<br />正數: 轉入錢包<br />負數: 轉出錢包 |
 | `balance` | BIGINT | Not null |   | 操作完後的餘額 |
 | `order_status` | TINYINT | Not null |   | 交易狀態<br />0: 成功<br />1: 餘額不足 |
@@ -321,6 +354,7 @@ slot的注單<br />一局會有一個注單
 | `id` | BIGINT | PRIMARY, Auto increments, Not null |   | 流水號 |
 | `account_id` | INT | Not null |   | 帳號ID |
 | `player_code` | VARCHAR(255) | Not null |   | 玩家代碼<br />cq9用 |
+| `game_token` | VARCHAR(255) | Not null |   | 遊戲token |
 | `game_id` | INT | Not null |   | 遊戲ID |
 | `round_id` | BIGINT | Not null, Unique |   | 局ID |
 | `bet` | BIGINT | Not null |   | 押注 |
@@ -356,7 +390,7 @@ slot的細單<br />每個spin對應一個細單
 | `account_id` | INT | Not null |   | 帳號ID |
 | `player_code` | VARCHAR(255) | Not null |   | 玩家代碼<br />cq9用 |
 | `game_id` | INT | Not null |   | 遊戲ID |
-| `round_id` | BIGINT | Not null, Unique |   | 局ID |
+| `round_id` | BIGINT | Not null |   | 局ID |
 | `game_mode` | INT | Not null |   | 遊戲模式<br />0: base game<br />1: bonus game<br />2: lucky draw<br />3: free game |
 | `spin_serial` | INT | Not null |   | 此局一輪中bonus game play、lucky draw play、free game spin的流水號 |
 | `win` | BIGINT | Not null |   | 贏的金額 |
@@ -369,7 +403,6 @@ slot的細單<br />每個spin對應一個細單
 | Name | Columns | Type | Description |
 | --- | --- | --- | --- |
 | PRIMARY | `id` | PRIMARY |   |
-| round_id_UNIQUE | `round_id` | UNIQUE |   |
 
 
 ## Table: `operator`
@@ -407,7 +440,7 @@ slot的細單<br />每個spin對應一個細單
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
-| `skey` | VARCHAR(45) | PRIMARY, Not null |   | key<br />last_bet_sync_time: 上次注單與cq9同步的時間<br />slot_round_id: slot的round id, 當作除注單round id外的另一個備援資料<br />money_fraction_multiple: 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位 |
+| `skey` | VARCHAR(45) | PRIMARY, Not null |   | key<br />last_bet_sync_time: 上次注單與cq9同步的時間<br />slot_round_id: slot的round id, 當作除注單round id外的另一個備援資料<br />money_fraction_multiple: 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位<br />round_code_prefix: 局號 prefix<br />cq9_env: cq9 環境<br />cq9_auth_header_key: cq9 api auth header key<br />cq9_auth_header_value: cq9 api auth header value<br />cq9_site_url: cq9 API base url<br />cq9_max_win: cq9單一spin允許的最大贏取金額 |
 | `svalue` | VARCHAR(255) | Not null |   | value |
 
 
