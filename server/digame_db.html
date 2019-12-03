@@ -29,12 +29,12 @@
 
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
-<tr><td><code>id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>帳號ID</td></tr>
-<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
-<tr><td><code>user_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
+<tr><td><code>account_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>帳號ID</td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL, UNIQUE</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>user_name</code></td><td>VARCHAR(20)</td><td>NOT NULL, UNIQUE</td><td> </td><td>使用者名稱</td></tr>
 <tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>餘額</td></tr>
 <tr><td><code>currency_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>貨幣ID</td></tr>
-<tr><td><code>status</code></td><td>TINYINT</td><td>NOT NULL</td><td> </td><td>狀態<br />1: 正常<br />2: 凍結<br />3: 停用</td></tr>
+<tr><td><code>status</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>狀態<br />0: 正常<br />1: 凍結<br />2: 停用</td></tr>
 <tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 <tr><td><code>update_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>最近一次的修改時間</td></tr>
 <tr><td><code>is_deleted</code></td><td>SMALLINT</td><td>NOT NULL</td><td> </td><td>邏輯刪除</td></tr>
@@ -44,7 +44,8 @@
 
 <table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
 
-<tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+<tr><td>PRIMARY</td><td><code>account_id</code></td><td>PRIMARY</td><td> </td></tr>
+<tr><td>user_name_UNIQUE</td><td><code>user_name</code>, <code>operator_id</code></td><td>UNIQUE</td><td> </td></tr>
 </tbody></table><a href="#d1_doc_gen_contents">To contents</a>
 
 <h2 id="balance_history"> Table: <code>balance_history</code></h2>
@@ -64,7 +65,7 @@
 <tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>操作完後的餘額</td></tr>
 <tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 <tr><td><code>table_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>table名稱<br />紀錄關聯的table名稱</td></tr>
-<tr><td><code>table_id</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>table row id<br />紀錄關聯的table對應資料列的ID</td></tr>
+<tr><td><code>table_row_id</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>table row id<br />紀錄關聯的table對應資料列的ID</td></tr>
 </tbody></table>
 
 <h3>Indexes:</h3>
@@ -112,7 +113,7 @@
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
 <tr><td><code>currency_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>貨幣ID</td></tr>
-<tr><td><code>currency_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>貨幣名稱</td></tr>
+<tr><td><code>currency_name</code></td><td>VARCHAR(20)</td><td>NOT NULL</td><td> </td><td>貨幣名稱</td></tr>
 <tr><td><code>denom</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>匯率<br />錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)</td></tr>
 </tbody></table>
 
@@ -230,10 +231,12 @@
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
 <tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
-<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
-<tr><td><code>user_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
-<tr><td><code>api_name</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
+<tr><td><code>api_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
+<tr><td><code>operator_code</code></td><td>VARCHAR(20)</td><td>NOT NULL</td><td> </td><td>營運商代碼</td></tr>
+<tr><td><code>user_name</code></td><td>VARCHAR(20)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
+<tr><td><code>request</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>request內容</td></tr>
 <tr><td><code>response</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>response內容</td></tr>
+<tr><td><code>code</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>回應碼</td></tr>
 <tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 </tbody></table>
 
@@ -255,12 +258,13 @@
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
 <tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>流水號</td></tr>
-<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
-<tr><td><code>user_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
 <tr><td><code>api_name</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>api名稱</td></tr>
+<tr><td><code>operator_code</code></td><td>VARCHAR(20)</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>user_name</code></td><td>VARCHAR(20)</td><td>NOT NULL</td><td> </td><td>使用者名稱</td></tr>
+<tr><td><code>request</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td> </td></tr>
 <tr><td><code>response</code></td><td>TEXT</td><td>NOT NULL</td><td> </td><td>response內容</td></tr>
-<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 <tr><td><code>error_code</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>錯誤碼</td></tr>
+<tr><td><code>create_time</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>建立時間</td></tr>
 </tbody></table>
 
 <h3>Indexes:</h3>
@@ -343,8 +347,8 @@
 
 <tr><td><code>id</code></td><td>BIGINT</td><td>PRIMARY, AUTO INCREMENTS, NOT NULL</td><td> </td><td>單號</td></tr>
 <tr><td><code>account_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>帳號ID</td></tr>
-<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL</td><td> </td><td>營運商ID</td></tr>
-<tr><td><code>order_id</code></td><td>VARCHAR(50)</td><td>NOT NULL</td><td> </td><td> </td></tr>
+<tr><td><code>operator_id</code></td><td>INT</td><td>NOT NULL, UNIQUE</td><td> </td><td>營運商ID</td></tr>
+<tr><td><code>order_id</code></td><td>VARCHAR(50)</td><td>NOT NULL, UNIQUE</td><td> </td><td>交易唯一碼</td></tr>
 <tr><td><code>amount</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>金額<br />正數: 轉入錢包<br />負數: 轉出錢包</td></tr>
 <tr><td><code>balance</code></td><td>BIGINT</td><td>NOT NULL</td><td> </td><td>操作完後的餘額</td></tr>
 <tr><td><code>order_status</code></td><td>TINYINT</td><td>NOT NULL</td><td> </td><td>交易狀態<br />0: 成功<br />1: 餘額不足</td></tr>
@@ -356,6 +360,7 @@
 <table><thead><tr class="header"><th align="left">Name</th><th align="left">Columns</th><th align="left">Data type</th><th align="left">Description</th></tr></thead><tbody>
 
 <tr><td>PRIMARY</td><td><code>id</code></td><td>PRIMARY</td><td> </td></tr>
+<tr><td>order_id_UNIQUE</td><td><code>order_id</code>, <code>operator_id</code></td><td>UNIQUE</td><td> </td></tr>
 </tbody></table><a href="#d1_doc_gen_contents">To contents</a>
 
 <h2 id="log_slot_bet"> Table: <code>log_slot_bet</code></h2>
@@ -433,7 +438,7 @@
 <table><thead><tr class="header"><th align="left">Column</th><th align="left">Data type</th><th align="left">Attribute</th><th align="left">Default</th><th align="left">Description</th></tr></thead><tbody>
 
 <tr><td><code>operator_id</code></td><td>INT</td><td>PRIMARY, NOT NULL</td><td> </td><td>營運商ID</td></tr>
-<tr><td><code>operator_code</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>營運商代碼</td></tr>
+<tr><td><code>operator_code</code></td><td>VARCHAR(20)</td><td>NOT NULL</td><td> </td><td>營運商代碼</td></tr>
 <tr><td><code>team_code</code></td><td>VARCHAR(45)</td><td>NOT NULL</td><td> </td><td>團隊代碼<br />cq9用</td></tr>
 <tr><td><code>encrypt_key</code></td><td>VARCHAR(255)</td><td>NOT NULL</td><td> </td><td>加密金鑰<br />錢包API用</td></tr>
 <tr><td><code>note</code></td><td>VARCHAR(100)</td><td>NOT NULL</td><td> </td><td>說明</td></tr>
