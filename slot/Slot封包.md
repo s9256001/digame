@@ -42,6 +42,7 @@ Slot 封包<span id="標題"></span>
 		- GameState      uint8              // <a href="#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在 normal game 還是 free game
 		- WinType        uint8              // <a href="#中獎類型">中獎類型</a>
 		- Multiplier     uint64             // 倍數
+		- ScreenOrg      [][]int            // 原始盤面
 		- SymbolResult   [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
 		- ScreenOutput   [][]int            // 盤面輸出資訊, 供下次 spin 使用; 如 free game 的 lock wilds 盤面資訊
 		- WinLineInfos   []SSlotWinLineInfo // 贏線資訊列表
