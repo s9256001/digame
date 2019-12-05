@@ -73,7 +73,7 @@ function server_deploy_with_key()
 	
 	envPath=../Server/env
 	scp -i $1 -r $envPath/server/$2/* $3/Server/server/
-	scp -i $1 -r $envPath/wallet/linux/* $2/Server/wallet/
+	scp -i $1 -r $envPath/wallet/linux/* $3/Server/wallet/
 }
 # $1: password, $2: linux dir, $3: dstURL
 function server_deploy_with_password()
@@ -82,5 +82,5 @@ function server_deploy_with_password()
 	
 	envPath=../Server/env
 	sshpass -p $1 scp $envPath/server/$2/* $3/Server/server/
-	sshpass -p $1 scp $envPath/wallet/linux/* $2/Server/wallet/
+	sshpass -p $1 scp $envPath/wallet/linux/* $3/Server/wallet/
 }
