@@ -66,7 +66,7 @@ function server_commit()
 	git push origin master
 	popd
 }
-# $1: pem, $2: linux dir, $3: dstURL
+# $1: pem, $2: linuxDir, $3: dstURL
 function server_deploy_with_key()
 {
 	echo 'deploy server...'
@@ -75,12 +75,12 @@ function server_deploy_with_key()
 	scp -i $1 -r $envPath/server/$2/* $3/Server/server/
 	scp -i $1 -r $envPath/wallet/linux/* $3/Server/wallet/
 }
-# $1: password, $2: linux dir, $3: dstURL
+# $1: password, $2: linuxDir, $3: dstURL
 function server_deploy_with_password()
 {
 	echo 'deploy server...'
 	
 	envPath=../Server/env
-	sshpass -p $1 scp $envPath/server/$2/* $3/Server/server/
-	sshpass -p $1 scp $envPath/wallet/linux/* $3/Server/wallet/
+	sshpass -p $1 scp -r $envPath/server/$2/* $3/Server/server/
+	sshpass -p $1 scp -r $envPath/wallet/linux/* $3/Server/wallet/
 }

@@ -36,3 +36,19 @@ function install_golang()
 	
 	printc C_YELLOW 'you must relogin to export the environment variable\n'
 }
+function install_sshpass()
+{
+	echo 'install sshpass...'
+	
+	apt install sshpass
+}
+# $1: dockerComposeVersion
+function install_docker_compose()
+{
+	echo 'install docker-compose...'
+	
+	curl -L "https://github.com/docker/compose/releases/download/$1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	chmod +x /usr/local/bin/docker-compose
+	
+	printc C_YELLOW 'you must relogin to use\n'
+}
