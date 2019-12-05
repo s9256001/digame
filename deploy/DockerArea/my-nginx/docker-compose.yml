@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  my-nginx:
+    image: nginx:1.17.6
+    container_name: my-nginx
+    ports:
+      - "3000:80"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../game:/usr/share/nginx/html/game
+    security_opt:
+      - seccomp:unconfined
+      
