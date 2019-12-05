@@ -37,6 +37,11 @@ function server_build()
 	go build -o $envPath/gameserver/server.out server/gameserver/main.go
 	go build -o $envPath/betsync/server.out server/betsync/main.go
 	go build -o $envPath/betquery/server.out server/betquery/main.go
+	
+	cp $envPath/dataserver/server.out $envPath/../linux_demo/dataserver/server.out
+	cp $envPath/gameserver/server.out $envPath/../linux_demo/gameserver/server.out
+	cp $envPath/dataserver/server.out $envPath/../linux_dev/dataserver/server.out
+	cp $envPath/gameserver/server.out $envPath/../linux_dev/gameserver/server.out
 	popd
 	
 	pushd $PWD
@@ -61,12 +66,21 @@ function server_commit()
 	git push origin master
 	popd
 }
-# $1: pem, $2: dstURL
-function server_deploy()
+# $1: pem, $2: linux dir, $3: dstURL
+function server_deploy_with_key()
 {
 	echo 'deploy server...'
 	
 	envPath=../Server/env
-	scp -i $1 -r $envPath/server/linux/* $2/Server/server/
+	scp -i $1 -r $envPath/server/$2/* $3/Server/server/
 	scp -i $1 -r $envPath/wallet/linux/* $2/Server/wallet/
+}
+# $1: password, $2: linux dir, $3: dstURL
+function server_deploy_with_password()
+{
+	echo 'deploy server...'
+	
+	envPath=../Server/env
+	sshpass -p $1 scp $envPath/server/$2/* $3/Server/server/
+	sshpass -p $1 scp $envPath/wallet/linux/* $2/Server/wallet/
 }

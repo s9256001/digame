@@ -3,20 +3,22 @@ source server_operation
 source menu
 source ../Deploy/secret
 
-commands=(1 2 3 4 5)
+commands=(1 2 3 4 5 6)
 descriptions=(\
 	'clone'\
 	'pull'\
 	'build'\
 	'commit'\
-	'deploy'\
+	'deploy demo'\
+	'deploy dev'\
 	)
 funcs=(\
 	'server_clone $gitlabURL'\
 	'server_pull'\
 	'server_build'\
 	'server_commit'\
-	'server_deploy ../Deploy/$dev1Pem $dev1User@$dev1URL:/home/$dev1User'\
+	'server_deploy_with_password $demoPassword linux_demo $demoUser@$demoURL:/home/$demoUser'\
+	'server_deploy_with_key ../Deploy/$dev1Pem linux_dev $dev1User@$dev1URL:/home/$dev1User'\
 	)
 
 menu_loop "server operation" commands descriptions funcs
