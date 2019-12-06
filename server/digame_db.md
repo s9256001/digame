@@ -1,4 +1,4 @@
-<h3><a href="http://htmlpreview.github.com/?https://github.com/s9256001/digame/blob/master/server/digame_db.html" target="_blank">digame_db.html</a></h3>
+<h3><a href="http://htmlpreview.github.com/?https://github.com/s9256001/digame/blob/master/server/digame_db.html">digame_db.html</a></h3>
 
 # Schema documentation
 
