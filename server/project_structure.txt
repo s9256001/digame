@@ -1,9 +1,9 @@
 digame
   ├─base
-  │  ├─gapiclientpkg
+  │  ├─gapiclientpkg   
   │  ├─geventsubjectpkg
-  │  ├─ggamepkg
-  │  ├─ghandlerpkg
+  │  ├─ggamepkg        
+  │  ├─ghandlerpkg     
   │  ├─gifpkg
   │  ├─gloggerpkg
   │  ├─gnodepkg
@@ -26,8 +26,10 @@ digame
   │  └─slotsimulator
   │      └─slotsimpkg
   ├─math
-  │  ├─mathbn06pkg
-  │  └─yihungyuanmathpkg
+  │  ├─mathbn07pkg
+  │  ├─mathbn08pkg
+  │  ├─mathbn09pkg
+  │  └─mathcompkg
   ├─server
   │  ├─betquery
   │  │  └─serverpkg
@@ -35,11 +37,11 @@ digame
   │  │  └─serverpkg
   │  ├─common
   │  │  ├─dbagentpkg
-  │  │  ├─packetpkg
-  │  │  ├─platform
+  │  │  ├─operator
   │  │  │  ├─apibetdetailpkg
   │  │  │  ├─apicompkg
   │  │  │  └─cq9apipkg
+  │  │  ├─packetpkg
   │  │  ├─redisagentpkg
   │  │  ├─srvbasepkg
   │  │  ├─srvcompkg
@@ -57,3 +59,4 @@ digame
   │      └─serverpkg
   └─_script
       └─bin
+          └─uddu
