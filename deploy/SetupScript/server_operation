@@ -6,29 +6,29 @@ function server_clone()
 {
 	echo 'clone server...'
 
-	pushd $PWD
+	pushd $PWD > /dev/null
 	cd ../Server
 	git clone $1/digame/src/server.git src/server
 	git clone $1/digame/env.git env
-	popd
+	popd > /dev/null
 }
 function server_pull()
 {
 	echo 'pull server...'
 	
-	pushd $PWD
+	pushd $PWD > /dev/null
 	cd ../Server/src/server
 	git checkout -- ./src/digame/go.mod
 	git pull
 	cd ../../env
 	git pull
-	popd
+	popd > /dev/null
 }
 function server_build()
 {
 	echo 'build server...'
 	
-	pushd $PWD
+	pushd $PWD > /dev/null
 	cd ../Server/src/server/src/digame
 	envPath=../../../../env/server/linux
 	export GO111MODULE=on
@@ -42,21 +42,21 @@ function server_build()
 	cp $envPath/gameserver/server.out $envPath/../linux_demo/gameserver/server.out
 	cp $envPath/dataserver/server.out $envPath/../linux_dev/dataserver/server.out
 	cp $envPath/gameserver/server.out $envPath/../linux_dev/gameserver/server.out
-	popd
+	popd > /dev/null
 	
-	pushd $PWD
+	pushd $PWD > /dev/null
 	cd ../Server/src/server/src/digame
 	envPath=../../../../env/wallet/linux
 	export GO111MODULE=on
 	
 	go build -o $envPath/wallet/server.out wallet/wallet/main.go
-	popd
+	popd > /dev/null
 }
 function server_commit()
 {
 	echo 'commit server...'
 	
-	pushd $PWD
+	pushd $PWD > /dev/null
 	cd ../Server/env
 	commit_comment="[src] add. linux server 上版"
 	askDefault "commit comment" "commit_comment"
@@ -64,7 +64,7 @@ function server_commit()
 	git add *.out
 	git commit -m "$commit_comment_escape"
 	git push origin master
-	popd
+	popd > /dev/null
 }
 # $1: pem, $2: linuxDir, $3: dstURL
 function server_deploy_with_key()
