@@ -23,6 +23,7 @@ BGPlay --> RoundEnd : BG 表演完, 結束
 LDPlay --> FGPlay : LD 表演完, 進 FG
 
 FGPlay --> LDPlay : FG 表演完, FG retrigger, 有 LD
+FGPlay --> BGPlay : FG 表演完, 中 BG
 FGPlay --> RoundEnd : FG 表演完, 結束
 
 RoundEnd --> NGPlay : 局結束, 記帳完畢
