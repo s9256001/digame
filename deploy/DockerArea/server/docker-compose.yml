@@ -48,4 +48,19 @@ services:
       - seccomp:unconfined
     command:
       [sh, -c, "./server.out"]
+  wallet.v3:
+    image: golang:1.12.9
+    container_name: wallet.v3
+    init: true
+    ports:
+      - "13101:13101"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server/wallet.v3:/wallet.v3
+    working_dir: /wallet.v3/wallet
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "./server.out"]
       
