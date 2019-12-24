@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  my-mariadb:
+    image: mariadb:10.4.8
+    container_name: my-mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      - TZ=Asia/Taipei
+      - MYSQL_ROOT_PASSWORD=asdf5678
+    volumes:
+      - ./config:/etc/mysql/conf.d
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ../../Storage/my-mariadb/data:/var/lib/mysql
+    security_opt:
+      - seccomp:unconfined
+      
