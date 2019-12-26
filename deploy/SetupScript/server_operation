@@ -57,7 +57,7 @@ function server_build()
 	envPath=../../../../env/wallet.v3/linux
 	export GO111MODULE=on
 	
-	go build -o $envPath/wallet/server.out wallet.v3/wallet/main.go
+	go build -ldflags="-X 'digame/wallet.v3/wallet/serverpkg.debugOnString=true'" -o $envPath/wallet/server.out wallet.v3/wallet/main.go
 	popd > /dev/null
 }
 function server_commit()
