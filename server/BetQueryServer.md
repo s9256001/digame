@@ -3,6 +3,11 @@ BetQueryServer
 0. **協定**
 	- post
 	- json 格式
+0. **回應碼**
+	- Success          = 0
+	- Failed           = 1
+	- NotInGame        = 2
+	- InvalidParameter = 3
 0. **取得注單摘要列表**
 	- /slot/betsummarys
 	- SSlotSpinSummary
