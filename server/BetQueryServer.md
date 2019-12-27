@@ -3,69 +3,71 @@ BetQueryServer
 0. **取得注單摘要列表**
 	- /slot/betsummarys
 	- SSlotSpinSummary
-		- round_code string // 局號
-		- bet_multiple int // 押注乘數
-		- denom  int // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
-		- bet int64 // 投注 (錢)
-		- win int64 // 贏分 (錢)
-		- bet_time int64 // 投注時間
-		- end_time int64 // 取分時間
+		- round_code   string // 局號
+		- bet_multiple int    // 押注乘數
+		- denom        int    // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
+		- bet          int64  // 投注 (錢)
+		- win          int64  // 贏分 (錢)
+		- bet_time     int64  // 投注時間
+		- end_time     int64  // 取分時間
 	- request: SCtoSBetSummarysGet
-		- token string // 識別使用者身分的 token
-		- game_code string // 遊戲代碼
-		- query_type int // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢, 2: 查詢最近的一頁
+		- token      string // 識別使用者身分的 token
+		- query_type int    // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢, 2: 查詢最近的一頁
 		- round_code string // 局號
-		- begin_time int64 // 起始時間
-		- end_time int64 // 結束時間
-		- rows int // 一頁幾筆
-		- page int // 要求第幾頁 (1-based)
+		- begin_time int64  // 起始時間
+		- end_time   int64  // 結束時間
+		- rows       int    // 一頁幾筆
+		- page       int    // 要求第幾頁 (1-based)
 	- response: SStoCBetSummarysGet
-		- account string // 帳號
-		- money_fraction_multiple int // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
-		- game_name string // 遊戲名稱
-		- line int // 線數
-		- total_page int // 總共幾頁
-		- spin_summarys []SSlotSpinSummary // Spin 摘要列表
+		- code                    int                // 回應碼
+		- user_name               string             // 使用者名稱
+		- money_fraction_multiple int                // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
+		- game_name               string             // 遊戲名稱
+		- line                    int                // 線數
+		- total_page              int                // 總共幾頁
+		- spin_summarys           []SSlotSpinSummary // Spin 摘要列表
 0. **取得注單明細**
 	- /slot/betdetail
 	- SSlotOptionValue
-		- option_value_type uint8    // 選項值的類型
-		- selected_value   int      // 選到的值 (暗選會用到)
-		- other_values     []int    // 其他的值列表 (暗選時前端需自己打亂)
+		- option_value_type uint8 // 選項值的類型
+		- selected_value    int   // 選到的值 (暗選會用到)
+		- other_values      []int // 其他的值列表 (暗選時前端需自己打亂)
 	- SSlotOptionInfo
 		- bonus game、lucky draw 時 SSlotSpinDetail.Info 的結構
 		- options []SSlotOptionValue // 選項
 	- SSlotWinLineInfo
-		- line_no      uint8    // 線號 (1-based); line game 用
-		- symbol_id    uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標編號">圖標編號</a>
-		- symbol_type  uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標類型">圖標類型</a>
-		- symbol_count uint8    // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
-		- way_count    uint64   // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
-		- win_position [][]int  // 贏分位置的列表; 第一維為有幾個贏分位置, 第二維為 [x, y] 座標表示, x 為第幾軸, y 為由上到下第幾格
-		- multiplier  uint64   // 線倍數
-		- win         uint64   // 贏分 (錢)
-		- win_type     uint8    // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
-		- odds        uint64   // 賠率
+		- line_no      uint8   // 線號 (1-based); line game 用
+		- symbol_id    uint8   // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標編號">圖標編號</a>
+		- symbol_type  uint8   // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#圖標類型">圖標類型</a>
+		- symbol_count uint8   // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
+		- way_count    uint64  // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
+		- win_position [][]int // 贏分位置的列表; 第一維為有幾個贏分位置, 第二維為 [x, y] 座標表示, x 為第幾軸, y 為由上到下第幾格
+		- multiplier   uint64  // 線倍數
+		- win          uint64  // 贏分 (錢)
+		- win_type     uint8   // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
+		- odds         uint64  // 賠率
 	- SSlotSpinInfo
-		- normal game、free game 時 SSlotSpinDetail.Info 的結構
-		- win_type      uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
-		- multiplier   uint64             // 倍數
-		- screen_org [][]int // 原始盤面
-		- symbol_result [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
-		- screen_output [][]int            // 盤面輸出資訊, 供下次 spin 使用; 如 free game 的 lock wilds 盤面資訊
+		- // normal game、free game 時 SSlotSpinDetail.Info 的結構
+		- win_type       uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
+		- multiplier     uint64             // 倍數
+		- screen_org     [][]int            // 原始盤面
+		- symbol_result  [][]int            // symbol id 盤面; 第一維為由左到右第幾軸, 第二維為一軸由上到下第幾格
+		- screen_output  [][]int            // 盤面輸出資訊, 供下次 spin 使用; 如 free game 的 lock wilds 盤面資訊
 		- win_line_infos []SSlotWinLineInfo // 贏線資訊列表
-		- win          int64              // 贏分 (錢)
+		- win            int64              // 贏分 (錢)
 	- SSlotSpinDetail
 		- game_state uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在 normal game 還是 free game
-		- win       int64       // 贏分 (錢)
+		- win        int64       // 贏分 (錢)
 		- spin_time  int64       // spin的時間
-		- info      interface{} // 資訊; normal game、free game 為 SSlotSpinInfo, bonus game、lucky draw 為 SSlotOptionInfo
+		- info       interface{} // 資訊; normal game、free game 為 SSlotSpinInfo, bonus game、lucky draw 為 SSlotOptionInfo
 	- request: SCtoSBetDetailGet
-		- token string // 識別使用者身分的 token
+		- token      string // 識別使用者身分的 token
 		- round_code string // 局號
 	- response: SStoCBetDetailGet
-		- account string // 帳號
-		- money_fraction_multiple int // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
-		- game_name string // 遊戲名稱
-		- line int // 線數
-		- spin_detail SSlotSpinDetail // spin 明細
+		- code                    int               // 回應碼
+		- user_name               string            // 使用者名稱
+		- money_fraction_multiple int               // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
+		- game_name               string            // 遊戲名稱
+		- line                    int               // 線數
+		- spin_summary            SSlotSpinSummary  // Spin 摘要
+		- spin_details            []SSlotSpinDetail // spin 明細列表

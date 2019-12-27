@@ -40,8 +40,10 @@ function server_build()
 	
 	cp $envPath/dataserver/server.out $envPath/../linux_demo/dataserver/server.out
 	cp $envPath/gameserver/server.out $envPath/../linux_demo/gameserver/server.out
+	cp $envPath/betquery/server.out $envPath/../linux_demo/betquery/server.out
 	cp $envPath/dataserver/server.out $envPath/../linux_dev/dataserver/server.out
 	cp $envPath/gameserver/server.out $envPath/../linux_dev/gameserver/server.out
+	cp $envPath/betquery/server.out $envPath/../linux_dev/betquery/server.out
 	popd > /dev/null
 	
 	pushd $PWD > /dev/null

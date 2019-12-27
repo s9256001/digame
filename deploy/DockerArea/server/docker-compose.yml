@@ -33,6 +33,21 @@ services:
       - seccomp:unconfined
     command:
       [sh, -c, "./server.out"]
+  betquery:
+    image: golang:1.12.9
+    container_name: betquery
+    init: true
+    ports:
+      - "12301:12301"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server/server:/server
+    working_dir: /server/betquery
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "./server.out"]
   wallet:
     image: golang:1.12.9
     container_name: wallet
