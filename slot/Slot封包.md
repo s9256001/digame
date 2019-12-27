@@ -51,6 +51,7 @@ Slot 封包<span id="標題"></span>
 		- FGRemainTimes  uint8              // FG 剩餘次數
 		- FGMaxFlag      bool               // FG 達最高上限標記
 		- Win            int64              // 贏分 (錢)
+		- DemoModeRound  uint8				// Demo 場次 (0 表示結束)
 	- SSlotOptionValue
 		- OptionValueType uint8    // 選項值的類型
 		- SelectedValue   int      // 選到的值 (暗選會用到)
