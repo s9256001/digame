@@ -1,5 +1,8 @@
 BetQueryServer
 =========================
+0. **協定**
+	- post
+	- json 格式
 0. **取得注單摘要列表**
 	- /slot/betsummarys
 	- SSlotSpinSummary
