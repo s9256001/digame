@@ -21,7 +21,7 @@ BetQueryServer
 		- end_time     int64  // 取分時間
 	- request: SCtoSBetSummarysGet
 		- token      string // 識別使用者身分的 token
-		- query_type int    // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢, 2: 查詢最近的一頁
+		- query_type int    // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢
 		- round_code string // 局號
 		- begin_time int64  // 起始時間
 		- end_time   int64  // 結束時間
@@ -33,7 +33,7 @@ BetQueryServer
 		- money_fraction_multiple int                // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
 		- game_name               string             // 遊戲名稱
 		- line                    int                // 線數
-		- total_page              int                // 總共幾頁
+		- total_count             int                // 總共幾筆
 		- spin_summarys           []SSlotSpinSummary // Spin 摘要列表
 0. **取得注單明細**
 	- /slot/betdetail
