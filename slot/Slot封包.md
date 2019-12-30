@@ -281,6 +281,7 @@ Slot 封包<span id="標題"></span>
 		- GS_BONUSGAME_49   = 149
 		- GS_FEATUREGAME    = 150
 		- GS_FEATUREGAME_49 = 199
+		- GS_LUCKYDRAW      = 200
 	- 遊戲類型ID<span id="遊戲類型ID"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GameSlotTypeIDLine = 1
 		- GameSlotTypeIDWay  = 2
