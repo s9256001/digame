@@ -39,7 +39,8 @@ Slot 封包<span id="標題"></span>
 		- WinType     uint8     // <a href="#中獎類型">中獎類型</a>
 		- Odds        uint64    // 賠率
 	- SSlotSpinInfo
-		- GameState      uint8              // <a href="#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在 normal game 還是 free game
+		- GameStateType  uint8              // <a href="#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
+		- GameState      uint8              // <a href="#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
 		- WinType        uint8              // <a href="#中獎類型">中獎類型</a>
 		- Multiplier     uint64             // 倍數
 		- ScreenOrg      [][]int            // 原始盤面
@@ -282,6 +283,11 @@ Slot 封包<span id="標題"></span>
 		- GS_FEATUREGAME    = 150
 		- GS_FEATUREGAME_49 = 199
 		- GS_LUCKYDRAW      = 200
+	- 遊戲狀態類型<span id="遊戲狀態類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- GST_NORMALGAME  = 0
+		- GST_FREEGAME    = 1
+		- GST_BONUSGAME   = 2
+		- GST_FEATUREGAME = 3
 	- 遊戲類型ID<span id="遊戲類型ID"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GameSlotTypeIDLine = 1
 		- GameSlotTypeIDWay  = 2
