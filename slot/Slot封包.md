@@ -157,6 +157,7 @@ Slot 封包<span id="標題"></span>
 			- SN_N9 = 19
 		- 百搭
 			- SN_WD = 21
+			- SN_WY = 26
 		- 免費遊戲
 			- SN_FG = 31
 		- 紅利遊戲
