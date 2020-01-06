@@ -166,6 +166,8 @@ Slot 封包<span id="標題"></span>
 			- SN_SC = 51
 		- 混合圖標
 			- SN_WF = 91 // WD+FG
+			- SN_MX = 97 // mixed 1
+			- SN_MY = 98 // mixed 2
 	- 圖標類型<span id="圖標類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- ST_NONE   = 0x00
 		- ST_NORMAL = 0x01
