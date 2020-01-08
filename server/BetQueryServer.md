@@ -32,7 +32,7 @@ BetQueryServer
 		- user_name               string             // 使用者名稱
 		- money_fraction_multiple int                // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
 		- game_name               string             // 遊戲名稱
-		- line                    int                // 線數
+		- line                    int                // 線數; line game: 線數, way game: way 數
 		- total_count             int                // 總共幾筆
 		- spin_summarys           []SSlotSpinSummary // Spin 摘要列表
 0. **取得注單明細**
@@ -78,6 +78,6 @@ BetQueryServer
 		- user_name               string            // 使用者名稱
 		- money_fraction_multiple int               // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
 		- game_name               string            // 遊戲名稱
-		- line                    int               // 線數
+		- line                    int               // 線數; line game: 線數, way game: way 數
 		- spin_summary            SSlotSpinSummary  // Spin 摘要
 		- spin_details            []SSlotSpinDetail // spin 明細列表
