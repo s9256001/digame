@@ -61,7 +61,7 @@ Slot 封包<span id="標題"></span>
 	- GtoCSlotNGPlay
 		- Code int
 		- Result       int                  // 結果 (錯誤碼)
-		- RoundID      uint64               // 局 ID
+		- RoundCode    string               // 局號
 		- SpinInfo     SSlotSpinInfo        // Spin 資訊
 		- LDOptions    [][]SSlotOptionValue // LD 選項列表; 第一維為第幾次選擇, 一次選擇內可以選出多個複合值的組合
 		- WaitNGRespin bool                 // 等待 NG 重轉 (消去類用到)

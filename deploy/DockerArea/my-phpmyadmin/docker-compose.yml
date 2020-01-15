@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  my-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my-phpmyadmin
+    ports:
+      - "8012:80"
+    environment:
+      - TZ=Asia/Taipei
+      - PMA_ARBITRARY=1
+    volumes:
+      - ./config/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+    security_opt:
+      - seccomp:unconfined
+      
