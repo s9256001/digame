@@ -53,6 +53,8 @@ Slot 封包<span id="標題"></span>
 		- FGMaxFlag      bool               // FG 達最高上限標記
 		- Win            int64              // 贏分 (錢)
 		- ExtraData      string             // client 表演的額外資料
+		- Stage          uint8              // 遊戲階段
+		- Collection     uint8              // 蒐集資訊
 		- DemoModeRound  uint8				// Demo 場次 (0 表示結束)
 	- SSlotOptionValue
 		- OptionValueType uint8    // 選項值的類型
