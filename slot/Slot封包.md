@@ -159,6 +159,10 @@ Slot 封包<span id="標題"></span>
 			- SN_N9 = 19
 		- 百搭
 			- SN_WD = 21
+			- SN_W2 = 22
+			- SN_W3 = 23
+			- SN_W4 = 24
+			- SN_W5 = 25
 			- SN_WY = 26
 		- 免費遊戲
 			- SN_FG = 31
