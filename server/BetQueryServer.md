@@ -65,6 +65,7 @@ BetQueryServer
 		- screen_output  [][]int            // 盤面輸出資訊, 供下次 spin 使用; 如 free game 的 lock wilds 盤面資訊
 		- win_line_infos []SSlotWinLineInfo // 贏線資訊列表
 		- win            int64              // 贏分 (錢)
+		- extra_data     string             // client 表演的額外資料
 	- SSlotSpinDetail
 		- GameStateType uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
 		- GameState     uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
