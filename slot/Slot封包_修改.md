@@ -27,17 +27,17 @@ Slot 封包<span id="標題"></span>
 		- Code int
 		- BetMultiple int // 押注乘數
 	- SSlotWinLineInfo
-		- LineNo      uint8     // 線號 (1-based); line game 用
-		- SymbolID    uint8     // <a href="#圖標編號">圖標編號</a>
-		- SymbolType  uint8     // <a href="#圖標類型">圖標類型</a>
-		- SymbolCount uint8     // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
-		- WayCount    uint64    // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
-		- WinPosition [][]int   // 贏分位置的列表; 第一維為有幾個贏分位置, 第二維為 [x, y] 座標表示, x 為第幾軸, y 為由上到下第幾格
-		- Multiplier  uint64    // 線倍數
-		- WinOrg      uint64    // 未乘線倍數之前的贏分 (錢)
-		- Win         uint64    // 贏分 (錢)
-		- WinType     uint8     // <a href="#中獎類型">中獎類型</a>
-		- Odds        uint64    // 賠率
+		- LineNo      uint8   // 線號 (1-based); line game 用
+		- SymbolID    uint8   // <a href="#圖標編號">圖標編號</a>
+		- SymbolType  uint8   // <a href="#圖標類型">圖標類型</a>
+		- SymbolCount uint8   // symbol 連續的軸數 (ex. 3 連、4 連、5 連)
+		- WayCount    uint64  // way game 使用的連線數 (ex. 3 symbol, 4 reel 為 81 ways)
+		- WinPosition [][]int // 贏分位置的列表; 第一維為有幾個贏分位置, 第二維為 [x, y] 座標表示, x 為第幾軸, y 為由上到下第幾格
+		- Multiplier  uint64  // 線倍數
+		- WinOrg      uint64  // 未乘線倍數之前的贏分 (錢)
+		- Win         uint64  // 贏分 (錢)
+		- WinType     uint8   // <a href="#中獎類型">中獎類型</a>
+		- Odds        uint64  // 賠率
 	- SSlotSpinInfo
 		- GameStateType  uint8              // <a href="#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
 		- GameState      uint8              // <a href="#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
@@ -57,16 +57,16 @@ Slot 封包<span id="標題"></span>
 		- Collection     uint8              // 蒐集資訊
 		- DemoModeRound  uint8				// Demo 場次 (0 表示結束)
 	- SSlotOptionValue
-		- OptionValueType uint8    // 選項值的類型
-		- SelectedValue   int      // 選到的值 (暗選會用到)
-		- OtherValues     []int    // 其他的值列表 (暗選時前端需自己打亂)
+		- OptionValueType uint8 // 選項值的類型
+		- SelectedValue   int   // 選到的值 (暗選會用到)
+		- OtherValues     []int // 其他的值列表 (暗選時前端需自己打亂)
 	- GtoCSlotNGPlay
 		- Code int
-		- Result       int                  // 結果 (錯誤碼)
-		- RoundCode    string               // 局號
-		- SpinInfo     SSlotSpinInfo        // Spin 資訊
-		- LDOption     []SSlotOptionValue   // LD 選項; 一次選擇內可以選出多個複合值的組合
-		- WaitNGRespin bool                 // 等待 NG 重轉 (消去類用到)
+		- Result       int                // 結果 (錯誤碼)
+		- RoundCode    string             // 局號
+		- SpinInfo     SSlotSpinInfo      // Spin 資訊
+		- LDOption     []SSlotOptionValue // LD 選項; 一次選擇內可以選出多個複合值的組合
+		- WaitNGRespin bool               // 等待 NG 重轉 (消去類用到)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
@@ -77,10 +77,10 @@ Slot 封包<span id="標題"></span>
 		- Code int
 	- GtoCSlotBGPlay
 		- Code int
-		- Result    int                  // 結果 (錯誤碼)
-		- BGOption  []SSlotOptionValue   // BG 選項; 一次選擇內可以選出多個複合值的組合
-		- Wins      []int64              // BG 贏分列表 (錢)
-		- IsOver    bool                 // 是否 BG 結束
+		- Result    int                // 結果 (錯誤碼)
+		- BGOption  []SSlotOptionValue // BG 選項; 一次選擇內可以選出多個複合值的組合
+		- Win       int64              // BG 贏分 (錢)
+		- IsOver    bool               // 是否 BG 結束
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
@@ -89,11 +89,11 @@ Slot 封包<span id="標題"></span>
 	- CtoGSlotLDPlay
 		- Code int
 		- // 玩家選完, 前端表演完, 再發送此封包
-		- SelectedIndexes int // 選取的索引列表 (明選會用到)
+		- SelectedIndex int // 選取的索引 (明選會用到)
 	- GtoCSlotLDPlay
 		- Code int
-		- Result       int                  // 結果 (錯誤碼)
-		- LDOptionNext []SSlotOptionValue   // 下次 LD 選項; 一次選擇內可以選出多個複合值的組合; 空表示結束
+		- Result       int                // 結果 (錯誤碼)
+		- LDOptionNext []SSlotOptionValue // 下次 LD 選項; 一次選擇內可以選出多個複合值的組合; 空表示結束
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
@@ -103,10 +103,11 @@ Slot 封包<span id="標題"></span>
 		- Code int
 	- GtoCSlotFGPlay
 		- Code int
-		- Result       int                  // 結果 (錯誤碼)
-		- SpinInfo     SSlotSpinInfo        // Spin 資訊
-		- LDOption     []SSlotOptionValue   // LD 選項; 一次選擇內可以選出多個複合值的組合
-		- WaitNGRespin bool                 // 等待 NG 重轉 (消去類用到)
+		- Result       int                // 結果 (錯誤碼)
+		- SpinInfo     SSlotSpinInfo      // Spin 資訊
+		- LDOption     []SSlotOptionValue // LD 選項; 一次選擇內可以選出多個複合值的組合
+		- IsOver       bool               // 是否 FG 結束
+		- WaitNGRespin bool               // 等待 NG 重轉 (消去類用到)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
