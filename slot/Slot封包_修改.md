@@ -10,8 +10,6 @@ Slot 封包<span id="標題"></span>
 <a href="#Round End">Round End</a><br />
 <a href="#列舉">列舉</a>
 
-0. **說明**<span id="說明"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
-	- 由於 CQ9 要求玩家斷線, FG 必須整輪 (可能包含多場 Spin) 表演完, 所以此處 BG、LD、FG 都採用一包封包設計
 0. **初始資訊**<span id="初始資訊"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- GtoCSlotInit
 		- Code int
