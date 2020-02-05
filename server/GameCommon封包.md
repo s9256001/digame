@@ -24,10 +24,10 @@ Game Common 封包
 	- GtoCJoinGame
 		- Code int
 		- GameToken string // 遊戲 token
-		- Result    int    // 結果 (錯誤碼)
 		- GameID    int    // 遊戲 ID
-		- AccountID uint32 // 帳號 ID
 		- DemoOn    bool   // 是否開啟 demo 腳本模式
+		- Result    int    // 結果 (錯誤碼)
+		- AccountID uint32 // 帳號 ID
 		- Balance   int64  // 金額 (錢)
 	- 錯誤碼
 		- 0: Success
