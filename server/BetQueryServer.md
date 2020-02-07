@@ -69,11 +69,11 @@ BetQueryServer
 		- stage          uint8              // 遊戲階段
 		- collection     uint8              // 蒐集資訊
 	- SSlotSpinDetail
-		- GameStateType uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
-		- GameState     uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
-		- Win           int64       // 贏分 (錢)
-		- SpinTime      int64       // spin的時間
-		- Info          interface{} // 資訊; normal game、free game 為 SSlotSpinInfo, bonus game、lucky draw 為 SSlotOptionInfo
+		- game_state_type uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
+		- game_state      uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
+		- win             int64       // 贏分 (錢)
+		- spin_time       int64       // spin的時間
+		- info            interface{} // 資訊; normal game、free game 為 SSlotSpinInfo, bonus game、lucky draw 為 SSlotOptionInfo
 	- request: SCtoSBetDetailGet
 		- token      string // 識別使用者身分的 token
 		- round_code string // 局號

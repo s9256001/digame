@@ -299,6 +299,7 @@ Slot 封包<span id="標題"></span>
 		- GST_FREEGAME    = 1
 		- GST_BONUSGAME   = 2
 		- GST_FEATUREGAME = 3
+		- GST_LUCKYDRAW   = 4
 	- 遊戲類型ID<span id="遊戲類型ID"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GameSlotTypeIDLine = 1
 		- GameSlotTypeIDWay  = 2
