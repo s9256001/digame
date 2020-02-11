@@ -187,7 +187,7 @@ Slot 封包<span id="標題"></span>
 		- WT_NORMAL    = 0x01 // 一般給分
 		- WT_FREEGAME  = 0x02 // 中FreeGame
 		- WT_BONUSGAME = 0x04 // 中BonusGame
-		- WT_FEATUR    = 0x08 // 其他特殊獎勵
+		- WT_FEATURE   = 0x08 // 其他特殊獎勵
 	- 遊戲狀態<span id="遊戲狀態"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GS_NORMALGAME     = 0
 		- GS_NORMALGAME_1   = 1
