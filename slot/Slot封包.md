@@ -183,11 +183,11 @@ Slot 封包<span id="標題"></span>
 		- ST_BG     = 0x08
 		- ST_SC     = 0x10
 	- 中獎類型<span id="中獎類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
-		- WT_NONE        = 0x00 // 無獎
-		- WT_NORMAL      = 0x01 // 一般給分
-		- WT_FREEGAME    = 0x02 // 中FreeGame
-		- WT_BONUSGAME   = 0x04 // 中BonusGame
-		- WT_FEATUREGAME = 0x08 // 其他特殊獎勵
+		- WT_NONE      = 0x00 // 無獎
+		- WT_NORMAL    = 0x01 // 一般給分
+		- WT_FREEGAME  = 0x02 // 中FreeGame
+		- WT_BONUSGAME = 0x04 // 中BonusGame
+		- WT_FEATUR    = 0x08 // 其他特殊獎勵
 	- 遊戲狀態<span id="遊戲狀態"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GS_NORMALGAME     = 0
 		- GS_NORMALGAME_1   = 1
