@@ -49,7 +49,7 @@ Game Common 封包
 		- Code int
 		- Balance int64 // 金額 (錢)
 0. **更新彩金**
-	- SJPInfo<span id="彩金層級"></span>
+	- SJPInfo<span id="彩金資訊"></span>
 		- Level int   // <a href="#彩金層級">彩金層級</a>
 		- Value int64 // 彩金現值 (錢)
 	- GtoCJackpotValue
