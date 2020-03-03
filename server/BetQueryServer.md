@@ -11,14 +11,22 @@ BetQueryServer
 	- InvalidParameter = 3
 0. **取得注單摘要列表**
 	- /slot/betsummarys
+	- SSlotJPContribution
+		- jp_level     int // 貢獻的彩金層級
+		- contribution int // 投注貢獻 (需除以 jp_fraction_multiple 才會等於錢)
+	- SSlotJPDetail
+		- contributions SSlotJPContribution // 投注貢獻列表
+		- jp_level     int                  // 拉取的彩金層級
 	- SSlotSpinSummary
-		- round_code   string // 局號
-		- bet_multiple int    // 押注乘數
-		- denom        int    // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
-		- bet          int64  // 投注 (錢)
-		- win          int64  // 贏分 (錢)
-		- bet_time     int64  // 投注時間
-		- end_time     int64  // 取分時間
+		- round_code   string        // 局號
+		- bet_multiple int           // 押注乘數
+		- denom        int           // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
+		- bet          int64         // 投注 (錢)
+		- win          int64         // 贏分 (錢)
+		- bet_time     int64         // 投注時間
+		- end_time     int64         // 取分時間
+		- jp_win       int64         // 彩金贏分 (錢) (包含在 win 裡面)
+		- jp_detail    SSlotJPDetail // 彩金明細
 	- request: SCtoSBetSummarysGet
 		- token      string // 識別使用者身分的 token
 		- query_type int    // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢
@@ -30,6 +38,7 @@ BetQueryServer
 	- response: SStoCBetSummarysGet
 		- code                    int                // 回應碼
 		- user_name               string             // 使用者名稱
+		- jp_fraction_multiple    int                // 彩金零頭部份轉為彩金現值要除的倍數, 也是貢獻比例的精準度
 		- money_fraction_multiple int                // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
 		- game_name               string             // 遊戲名稱
 		- game_type_id            int                // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲類型ID">遊戲類型ID</a>
