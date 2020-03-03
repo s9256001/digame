@@ -48,6 +48,13 @@ Game Common 封包
 	- GtoCPlayerBalance
 		- Code int
 		- Balance int64 // 金額 (錢)
+0. **更新彩金**
+	- SJPInfo<span id="彩金層級"></span>
+		- Level int   // <a href="#彩金層級">彩金層級</a>
+		- Value int64 // 彩金現值 (錢)
+	- GtoCJackpotValue
+		- Code int
+		- JPInfos []SJPInfo // 彩金資訊列表
 0. **列舉**
 	- 封包編號
 		- CtoGPing          = -1
@@ -58,3 +65,9 @@ Game Common 封包
 		- CtoGLeaveGame     = 1006
 		- GtoCLeaveGame     = 1008
 		- GtoCPlayerBalance = 1011
+		- GtoCJackpotValue  = 1013
+	- 彩金層級<span id="彩金層級"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- JPLevelGrand = 1
+		- JPLevelMajor = 2
+		- JPLevelMinor = 3
+		- JPLevelMini  = 4
