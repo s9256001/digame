@@ -65,7 +65,7 @@ Slot 封包<span id="標題"></span>
 		- SpinInfo     SSlotSpinInfo      // Spin 資訊
 		- LDOption     []SSlotOptionValue // LD 選項; 一次選擇內可以選出多個複合值的組合
 		- WaitNGRespin bool               // 等待 NG 重轉 (消去類用到)
-		- WinJPInfo    <a href="https://github.com/s9256001/digame/blob/master/server/GameCommon%E5%B0%81%E5%8C%85.md#彩金資訊">SJPInfo</a>            // 拉取彩金資訊 (Level 0 表示沒拉中)
+		- WinJPInfo    <a href="https://github.com/s9256001/digame/blob/master/server/GameCommon%E5%B0%81%E5%8C%85.md#彩金檢視資訊">SJPView</a>            // 拉取彩金資訊 (Level 0 表示沒拉中)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
