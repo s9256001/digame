@@ -7,6 +7,7 @@ Slot 封包<span id="標題"></span>
 <a href="#Bonus Game Play">Bonus Game Play</a><br />
 <a href="#Lucky Draw Play">Lucky Draw Play</a><br />
 <a href="#Free Game Play">Free Game Play</a><br />
+<a href="#Double Game Play">Double Game Play</a><br />
 <a href="#Round End">Round End</a><br />
 <a href="#列舉">列舉</a>
 
@@ -111,6 +112,19 @@ Slot 封包<span id="標題"></span>
 		- 0: Success
 		- 1: Failed
 		- 2: InvalidRoomState
+0. **Double Game Play**<span id="Double Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+	- CtoGSlotDGPlay
+		- Code int
+		- IsDouble bool // 是否要 Double
+	- GtoCSlotDGPlay
+		- Code int
+		- Result       int                // 結果 (錯誤碼)
+		- SpinInfo     SSlotSpinInfo      // Spin 資訊
+		- DGOption     []SSlotOptionValue // DG 選項
+	- 錯誤碼
+		- 0: Success
+		- 1: Failed
+		- 2: InvalidRoomState
 0. **Round End**<span id="Round End"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotRoundEnd
 		- Code int
@@ -136,6 +150,8 @@ Slot 封包<span id="標題"></span>
 		- GtoCSlotFGPlay   = 11009
 		- CtoGSlotRoundEnd = 11010
 		- GtoCSlotRoundEnd = 11011
+		- CtoGSlotDGPlay   = 11012
+		- GtoCSlotDGPlay   = 11013
 	- 圖標編號<span id="圖標編號"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- 空
 			- SN_XX = 0

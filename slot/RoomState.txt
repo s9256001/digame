@@ -1,17 +1,19 @@
 @startuml
 
-note "NG 表示 NormalGame\nBG 表示 BonusGame\nLD 表示 LuckyDraw\nFG 表示 FreeGame\n[] 為玩家送來的封包" as N1
+note "NG 表示 NormalGame\nBG 表示 BonusGame\nLD 表示 LuckyDraw\nFG 表示 FreeGame\nDG 表示 DoubleGame[] 為玩家送來的封包" as N1
 
 Init : 初始
 NGPlay : 等待下注\n[CtoGSlotNGPlay]
 BGPlay : BG 表演\n[CtoGSlotBGPlay]
 LDPlay : LD 表演\n[CtoGSlotLDPlay]
 FGPlay : FG 表演\n[CtoGSlotFGPlay]
+DGPlay : DG 表演\n[CtoGSlotDGPlay]
 RoundEnd : 局結束\n[CtoGSlotRoundEnd]
 
 [*] --> Init
 Init --> NGPlay : 玩家加入遊戲
 NGPlay --> NGPlay : 消去/respin
+NGPlay --> DGPlay : 沒中 BG、FG, 可以 DB
 NGPlay --> RoundEnd : 沒中 BG、FG
 NGPlay --> BGPlay : 中 BG
 NGPlay --> LDPlay : 中 FG, 有 LD
@@ -19,6 +21,7 @@ NGPlay --> FGPlay : 中 FG, 沒 LD
 FGPlay --> NGPlay : NG 消去/respin 未表演完
 
 BGPlay --> BGPlay : BG 未結束
+BGPlay --> DGPlay : BG 表演完, 可以 DB
 BGPlay --> RoundEnd : BG 表演完, 結束
 
 LDPlay --> FGPlay : LD 表演完, 進 FG
@@ -26,7 +29,11 @@ LDPlay --> FGPlay : LD 表演完, 進 FG
 FGPlay --> FGPlay : FG 未結束
 FGPlay --> LDPlay : FG 表演完, FG retrigger, 有 LD
 FGPlay --> BGPlay : FG 表演完, 中 BG
+FGPlay --> DGPlay : FG 表演完, 可以 DB
 FGPlay --> RoundEnd : FG 表演完, 結束
+
+DGPlay --> DGPlay : DG 未結束, 可以 DB
+DGPlay --> RoundEnd : DG 結束, 結束
 
 RoundEnd --> NGPlay : 局結束, 記帳完畢
 
