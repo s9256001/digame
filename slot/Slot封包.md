@@ -118,9 +118,9 @@ Slot 封包<span id="標題"></span>
 		- IsDouble bool // 是否要 Double
 	- GtoCSlotDGPlay
 		- Code int
-		- Result       int                // 結果 (錯誤碼)
-		- SpinInfo     SSlotSpinInfo      // Spin 資訊
-		- DGOption     []SSlotOptionValue // DG 選項
+		- Result   int                // 結果 (錯誤碼)
+		- SpinInfo SSlotSpinInfo      // Spin 資訊
+		- DGOption []SSlotOptionValue // DG 選項
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
@@ -312,12 +312,14 @@ Slot 封包<span id="標題"></span>
 		- GS_FEATUREGAME    = 150
 		- GS_FEATUREGAME_49 = 199
 		- GS_LUCKYDRAW      = 200
+		- GS_DOUBLEGAME     = 250
 	- 遊戲狀態類型<span id="遊戲狀態類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GST_NORMALGAME  = 0
 		- GST_FREEGAME    = 1
 		- GST_BONUSGAME   = 2
 		- GST_FEATUREGAME = 3
 		- GST_LUCKYDRAW   = 4
+		- GST_DOUBLEGAME  = 5
 	- 遊戲類型ID<span id="遊戲類型ID"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GameSlotTypeIDLine = 1
 		- GameSlotTypeIDWay  = 2

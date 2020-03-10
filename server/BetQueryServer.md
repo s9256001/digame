@@ -11,22 +11,22 @@ BetQueryServer
 	- InvalidParameter = 3
 0. **取得注單摘要列表**
 	- /slot/betsummarys
-	- SSlotJPContribution
-		- jp_level     int // 貢獻的彩金層級
-		- contribution int // 投注貢獻 (需除以 jp_fraction_multiple 才會等於錢)
-	- SSlotJPDetail
+	- SJPContribution
+		- jp_level int   // 貢獻的彩金層級
+		- value    int64 // 投注貢獻 (需除以 jp_fraction_multiple 才會等於錢)
+	- SJPDetail
 		- contributions SSlotJPContribution // 投注貢獻列表
-		- jp_level     int                  // 拉取的彩金層級
+		- jp_win_level  int                 // 拉取的彩金層級
 	- SSlotSpinSummary
-		- round_code   string        // 局號
-		- bet_multiple int           // 押注乘數
-		- denom        int           // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
-		- bet          int64         // 投注 (錢)
-		- win          int64         // 贏分 (錢)
-		- bet_time     int64         // 投注時間
-		- end_time     int64         // 取分時間
-		- jp_win       int64         // 彩金贏分 (錢) (包含在 win 裡面)
-		- jp_detail    SSlotJPDetail // 彩金明細
+		- round_code   string    // 局號
+		- bet_multiple int       // 押注乘數
+		- denom        int       // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
+		- bet          int64     // 投注 (錢)
+		- win          int64     // 贏分 (錢)
+		- bet_time     int64     // 投注時間
+		- end_time     int64     // 取分時間
+		- jp_win       int64     // 彩金贏分 (錢) (包含在 win 裡面)
+		- jp_detail    SJPDetail // 彩金明細
 	- request: SCtoSBetSummarysGet
 		- token      string // 識別使用者身分的 token
 		- query_type int    // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢
@@ -77,6 +77,10 @@ BetQueryServer
 		- extra_data     string             // client 表演的額外資料
 		- stage          uint8              // 遊戲階段
 		- collection     uint8              // 蒐集資訊
+	- SSlotDGInfo
+		- // double game 時 SSlotSpinDetail.Info 的結構
+		- spin_info   SSlotSpinInfo
+		- option_info SSlotOptionInfo
 	- SSlotSpinDetail
 		- game_state_type uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
 		- game_state      uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
