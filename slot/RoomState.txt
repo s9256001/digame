@@ -21,7 +21,6 @@ NGPlay --> FGPlay : 中 FG, 沒 LD
 FGPlay --> NGPlay : NG 消去/respin 未表演完
 
 BGPlay --> BGPlay : BG 未結束
-BGPlay --> DGPlay : BG 表演完, 可以 DB
 BGPlay --> RoundEnd : BG 表演完, 結束
 
 LDPlay --> FGPlay : LD 表演完, 進 FG
@@ -29,7 +28,6 @@ LDPlay --> FGPlay : LD 表演完, 進 FG
 FGPlay --> FGPlay : FG 未結束
 FGPlay --> LDPlay : FG 表演完, FG retrigger, 有 LD
 FGPlay --> BGPlay : FG 表演完, 中 BG
-FGPlay --> DGPlay : FG 表演完, 可以 DB
 FGPlay --> RoundEnd : FG 表演完, 結束
 
 DGPlay --> DGPlay : DG 未結束, 可以 DB
