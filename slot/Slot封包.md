@@ -118,11 +118,10 @@ Slot 封包<span id="標題"></span>
 		- IsDouble bool // 是否要 Double
 	- GtoCSlotDGPlay
 		- Code int
-		- Result         int                // 結果 (錯誤碼)
-		- SpinInfo       SSlotSpinInfo      // Spin 資訊
-		- DGOption       []SSlotOptionValue // DG 選項
-		- DGTotalTimes   int                // DG 總次數
-		- DGCurrentTimes int                // DG 目前次數
+		- Result         int           // 結果 (錯誤碼)
+		- SpinInfo       SSlotSpinInfo // Spin 資訊
+		- DGTotalTimes   int           // DG 總次數
+		- DGCurrentTimes int           // DG 目前次數
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed

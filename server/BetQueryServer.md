@@ -66,7 +66,7 @@ BetQueryServer
 		- win_type     uint8   // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
 		- odds         uint64  // 賠率
 	- SSlotSpinInfo
-		- // normal game、free game 時 SSlotSpinDetail.Info 的結構
+		- // normal game、free game、double game 時 SSlotSpinDetail.Info 的結構
 		- win_type       uint8              // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#中獎類型">中獎類型</a>
 		- multiplier     uint64             // 倍數
 		- screen_org     [][]int            // 原始盤面
@@ -77,10 +77,6 @@ BetQueryServer
 		- extra_data     string             // client 表演的額外資料
 		- stage          uint8              // 遊戲階段
 		- collection     uint8              // 蒐集資訊
-	- SSlotDGInfo
-		- // double game 時 SSlotSpinDetail.Info 的結構
-		- spin_info   SSlotSpinInfo
-		- option_info SSlotOptionInfo
 	- SSlotSpinDetail
 		- game_state_type uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態類型">遊戲狀態類型</a>; 可以辨別此次 spin 是在 normal game 還是 free game
 		- game_state      uint8       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#遊戲狀態">遊戲狀態</a>; 可以辨別此次 spin 是在哪一個 state
