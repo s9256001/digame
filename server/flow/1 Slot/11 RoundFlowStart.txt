@@ -9,11 +9,11 @@ autonumber 1
 Game -> GameServer: event SlotRoundFlowStart
 GameServer -> DataServer: GtoDSlotRoundFlowStart
 alt Demo
-	DataServer -> GameServer: 更新餘額\nDtoGSlotRoundFlowStart
+	DataServer -> GameServer: 貢獻彩金、拉彩金\n更新餘額\nDtoGSlotRoundFlowStart
 else CQ9
 	DataServer -> CQ9: 產生局 ID\nrequest /game/bet
 	CQ9 -> DataServer: response /game/bet
-	DataServer -> GameServer: 建立注單, 更新餘額\nDtoGSlotRoundFlowStart
+	DataServer -> GameServer: 貢獻彩金、拉彩金\n建立注單, 更新餘額\nDtoGSlotRoundFlowStart
 end
 GameServer -> Game: 更新餘額\ndispatch DtoGSlotRoundFlowStart
 

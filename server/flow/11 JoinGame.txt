@@ -15,7 +15,7 @@ else CQ9
 	DataServer -> CQ9: request /player/auth
 	CQ9 -> DataServer: response /player/auth
 end
-DataServer -> GameServer: DtoGJoinGame
+DataServer -> GameServer: 產生彩金資料\nDtoGJoinGame
 GameServer -> Game: 更新玩家資料\ndispatch DtoGJoinGame
 Game -> Client: GtoCJoinGame
 
