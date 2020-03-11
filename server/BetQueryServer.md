@@ -25,8 +25,8 @@ BetQueryServer
 		- win          int64     // 贏分 (錢)
 		- bet_time     int64     // 投注時間
 		- end_time     int64     // 取分時間
+		- jp_win_level int       // <a href="https://github.com/s9256001/digame/blob/master/server/GameCommon%E5%B0%81%E5%8C%85.md#彩金層級">彩金贏的種類</a> 
 		- jp_win       int64     // 彩金贏分 (錢) (包含在 win 裡面)
-		- jp_detail    SJPDetail // 彩金明細
 	- request: SCtoSBetSummarysGet
 		- token      string // 識別使用者身分的 token
 		- query_type int    // 查詢類型; 0: 以局號查詢, 1: 以時間範圍查詢
