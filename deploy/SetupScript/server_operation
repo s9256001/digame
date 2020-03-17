@@ -105,7 +105,7 @@ function server_commit()
     
     pushd $PWD > /dev/null
     cd ../Server/env
-    commit_comment="[src] add. linux server 上版"
+    commit_comment="[srv] add. linux server upload"
     askDefault "commit comment" "commit_comment"
     printf -v commit_comment_escape %b "$commit_comment"
     git add *.out
