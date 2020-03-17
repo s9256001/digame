@@ -23,12 +23,13 @@ Game Common 封包
 		- // 若 Server 比對 GameID 不合, 將回傳加入遊戲錯誤並切斷連線
 	- GtoCJoinGame
 		- Code int
-		- GameToken string // 遊戲 token
-		- GameID    int    // 遊戲 ID
-		- DemoOn    bool   // 是否開啟 demo 腳本模式
-		- Result    int    // 結果 (錯誤碼)
-		- AccountID uint32 // 帳號 ID
-		- Balance   int64  // 金額 (錢)
+		- GameToken  string // 遊戲 token
+		- GameID     int    // 遊戲 ID
+		- DemoOn     bool   // 是否開啟 demo 腳本模式
+		- Result     int    // 結果 (錯誤碼)
+		- AccountID  uint32 // 帳號 ID
+		- Balance    int64  // 金額 (錢)
+		- CurrencyID int    // <a href="#幣別">幣別</a>
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
