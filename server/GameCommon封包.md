@@ -71,3 +71,6 @@ Game Common 封包
 		- JPLevelMajor = 2
 		- JPLevelMinor = 3
 		- JPLevelMini  = 4
+	- 幣別<span id="幣別"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- CNY = 1
+		- VND = 2
