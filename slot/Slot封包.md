@@ -72,6 +72,7 @@ Slot 封包<span id="標題"></span>
 		- 1: Failed
 		- 2: InvalidRoomState
 		- 3: InvalidBetMultiple
+		- 4: MismatchRoundCode
 0. **Bonus Game Play**<span id="Bonus Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotBGPlay
 		- Code int
@@ -85,6 +86,7 @@ Slot 封包<span id="標題"></span>
 		- 0: Success
 		- 1: Failed
 		- 2: InvalidRoomState
+		- 3: MismatchRoundCode
 0. **Lucky Draw Play**<span id="Lucky Draw Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotLDPlay
 		- Code int
@@ -98,6 +100,7 @@ Slot 封包<span id="標題"></span>
 		- 0: Success
 		- 1: Failed
 		- 2: InvalidRoomState
+		- 3: MismatchRoundCode
 0. **Free Game Play**<span id="Free Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotFGPlay
 		- Code int
@@ -112,6 +115,7 @@ Slot 封包<span id="標題"></span>
 		- 0: Success
 		- 1: Failed
 		- 2: InvalidRoomState
+		- 3: MismatchRoundCode
 0. **Double Game Play**<span id="Double Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotDGPlay
 		- Code int
@@ -128,6 +132,8 @@ Slot 封包<span id="標題"></span>
 		- 0: Success
 		- 1: Failed
 		- 2: InvalidRoomState
+		- 3: MismatchRoundCode
+		- 4: InvalidBetMultiple
 0. **Round End**<span id="Round End"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotRoundEnd
 		- Code int
@@ -326,3 +332,6 @@ Slot 封包<span id="標題"></span>
 	- 遊戲類型ID<span id="遊戲類型ID"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GameSlotTypeIDLine = 1
 		- GameSlotTypeIDWay  = 2
+	- 局模式<span id="局模式"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- Normal    = 0
+		- DoubleBet = 1

@@ -19,6 +19,7 @@ BetQueryServer
 		- jp_win_level  int                 // 拉取的彩金層級
 	- SSlotSpinSummary
 		- round_code   string    // 局號
+		- round_mode   int       // <a href="https://github.com/s9256001/digame/blob/master/slot/Slot%E5%B0%81%E5%8C%85.md#局模式">局模式</a>
 		- bet_multiple int       // 押注乘數
 		- denom        int       // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
 		- bet          int64     // 投注 (錢)
