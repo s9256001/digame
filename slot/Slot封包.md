@@ -115,13 +115,15 @@ Slot 封包<span id="標題"></span>
 0. **Double Game Play**<span id="Double Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotDGPlay
 		- Code int
-		- IsDouble bool // 是否要 Double
+		- BetMultiple int  // 押注乘數 (DoubleBet 時傳送)
+		- IsDouble    bool // 是否要 Double
 	- GtoCSlotDGPlay
 		- Code int
 		- Result         int           // 結果 (錯誤碼)
 		- SpinInfo       SSlotSpinInfo // Spin 資訊
 		- DGTotalTimes   int           // DG 總次數
 		- DGCurrentTimes int           // DG 目前次數
+		- RoundCode      string        // 局號
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
