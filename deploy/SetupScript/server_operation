@@ -33,6 +33,7 @@ function server_pull()
     pushd $PWD > /dev/null
     cd ../Server/src/server
     git checkout -- ./src/digame/go.mod
+	git pull
     if [ ! -z "$serverTag" ]
     then
         git checkout $serverTag
