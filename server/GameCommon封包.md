@@ -36,6 +36,8 @@ Game Common 封包
 		- 2: NotReady
 		- 3: MismatchGameCode
 		- 4: GameDisabled
+		- 5: TokenInvalid
+		- 6: AlreadyInThisGame
 0. **離開遊戲**
 	- CtoGLeaveGame
 		- Code int
