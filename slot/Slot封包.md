@@ -15,16 +15,18 @@ Slot 封包<span id="標題"></span>
 	- GtoCSlotInit
 		- Code int
 		- // GtoCJoinGame 後 Server 會直接送這封包
-		- MoneyFractionMultiple int   // 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
-		- Denom                 int   // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
-		- Line                  int   // 線數; line game: 線數, way game: way 數
-		- BetMultiples          []int // 押注乘數列表
-		- BetUnit               int64 // 押注單位 (錢); line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
-		- GameTypeID            int   // <a href="#遊戲類型ID">遊戲類型ID</a>
+		- MoneyFractionMultiple int     // 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
+		- Denom                 int     // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
+		- Line                  int     // 線數; line game: 線數, way game: way 數
+		- BetMultiples          []int   // 押注乘數列表
+		- BetUnit               int64   // 押注單位 (錢); line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
+		- ExtraBetUnit          []int64 // 額外押注單位 (錢)
+		- GameTypeID            int     // <a href="#遊戲類型ID">遊戲類型ID</a>
 0. **Base Game Spin**<span id="Base Game Spin"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotNGPlay
 		- Code int
-		- BetMultiple int // 押注乘數
+		- BetMultiple   int // 押注乘數
+		- ExtraBetLevel int // 額外押注等級 (0 表示不使用)
 	- SSlotWinLineInfo
 		- LineNo      uint8   // 線號 (1-based); line game 用
 		- SymbolID    uint8   // <a href="#圖標編號">圖標編號</a>
