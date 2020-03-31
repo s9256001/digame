@@ -1,9 +1,9 @@
 @startuml
 
-note "NG 表示 NormalGame\nBG 表示 BonusGame\nLD 表示 LuckyDraw\nFG 表示 FreeGame\nDG 表示 DoubleGame[] 為玩家送來的封包" as N1
+note "NG 表示 NormalGame\nBG 表示 BonusGame\nLD 表示 LuckyDraw\nFG 表示 FreeGame\nDG 表示 DoubleGame\n[] 為玩家送來的封包" as N1
 
 Init : 初始
-NGPlay : 等待下注\n[CtoGSlotNGPlay]
+NGPlay : 等待下注\n[CtoGSlotNGPlay]\n[CtoGSlotDGPlay]
 BGPlay : BG 表演\n[CtoGSlotBGPlay]
 LDPlay : LD 表演\n[CtoGSlotLDPlay]
 FGPlay : FG 表演\n[CtoGSlotFGPlay]
@@ -13,7 +13,7 @@ RoundEnd : 局結束\n[CtoGSlotRoundEnd]
 [*] --> Init
 Init --> NGPlay : 玩家加入遊戲
 NGPlay --> NGPlay : 消去/respin
-NGPlay --> DGPlay : 沒中 BG、FG, 可以 DB
+NGPlay --> DGPlay : 沒中 BG、FG, 可以 DB\nDoubleBet 結束, 可以 DB
 NGPlay --> RoundEnd : 沒中 BG、FG
 NGPlay --> BGPlay : 中 BG
 NGPlay --> LDPlay : 中 FG, 有 LD
