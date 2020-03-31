@@ -20,7 +20,7 @@ Slot 封包<span id="標題"></span>
 		- Line                  int     // 線數; line game: 線數, way game: way 數
 		- BetMultiples          []int   // 押注乘數列表
 		- BetUnit               int64   // 押注單位 (錢); line game: 押注乘數x押注單位=每線押注, way game: 押注乘數x押注單位=總押注
-		- ExtraBetUnit          []int64 // 額外押注單位 (錢)
+		- ExtraBetUnits         []int64 // 額外押注單位列表 (錢)
 		- GameTypeID            int     // <a href="#遊戲類型ID">遊戲類型ID</a>
 0. **Base Game Spin**<span id="Base Game Spin"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotNGPlay
