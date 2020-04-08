@@ -34,16 +34,21 @@ function server_stop()
     echo 'server stop...'
 	
 	echo 'wallet:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet 'pm2 stop wallet'
+	serverName=wallet
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 stop $serverName"
 	
 	echo 'betquery:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_betquery 'pm2 stop betquery'
+	serverName=betquery
+	ssh -i ../Deploy/$proPem $proUser@$proURL_betquery "pm2 stop $serverName"
 	echo 'gameserver 1:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 'pm2 stop gameserver'
+	serverName=gameserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 "pm2 stop $serverName"
 	echo 'gameserver 2:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 'pm2 stop gameserver'
+	serverName=gameserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 "pm2 stop $serverName"
 	echo 'dataserver:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver 'pm2 stop dataserver'
+	serverName=dataserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver "pm2 stop $serverName"
 }
 function server_deploy()
 {
@@ -126,16 +131,16 @@ function server_status()
 	echo 'server status...'
 	
 	echo 'dataserver:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver "pm2 list dataserver"
+	ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver "pm2 list"
 	echo 'gameserver 1:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 "pm2 list gameserver"
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 "pm2 list"
 	echo 'gameserver 2:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 "pm2 list gameserver"
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 "pm2 list"
 	echo 'betquery:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_betquery "pm2 list betquery"
+	ssh -i ../Deploy/$proPem $proUser@$proURL_betquery "pm2 list"
 	
 	echo 'wallet:'
-	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 list wallet"
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 list"
 }
 function server_version()
 {
@@ -160,8 +165,31 @@ function server_version()
 	serverName=wallet
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep ServerVersion server.log | tail -1"
 }
+function server_error()
+{
+	echo 'server status...'
+	
+	envDir=server/server_go
+	echo 'dataserver:'
+	serverName=dataserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	echo 'gameserver 1:'
+	serverName=gameserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	echo 'gameserver 2:'
+	serverName=gameserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	echo 'betquery:'
+	serverName=betquery
+	ssh -i ../Deploy/$proPem $proUser@$proURL_betquery "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	
+	envDir=server/wallet
+	echo 'wallet:'
+	serverName=wallet
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+}
 
-commands=(1 2 3 4 5 6 7)
+commands=(1 2 3 4 5 6 7 8)
 descriptions=(\
 	'copy'\
 	'stop'\
@@ -170,6 +198,7 @@ descriptions=(\
 	'start'\
 	'status'\
 	'version'\
+	'error'\
 	)
 funcs=(\
 	'server_copy'\
@@ -179,6 +208,7 @@ funcs=(\
 	'server_start'\
 	'server_status'\
 	'server_version'\
+	'server_error'\
 	)
 
 menu_loop "pro operation" commands descriptions funcs
