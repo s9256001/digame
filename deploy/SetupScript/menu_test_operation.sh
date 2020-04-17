@@ -118,7 +118,6 @@ function server_error()
     echo 'wallet:'
     serverName=wallet
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
-	grep -rnw './server.log' -e '| ERR |'
 }
 
 commands=(1 2 3 4 5 6 7)
