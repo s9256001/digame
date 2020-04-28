@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   my-ubuntu:
-    image: quantumobject/docker-baseimage:latest
+    image: quantumobject/docker-baseimage:18.04
     container_name: my-ubuntu
     environment:
       - TZ=Asia/Taipei
