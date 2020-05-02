@@ -74,6 +74,7 @@ function server_build()
     cp $envPath/betquery/server.out $envPath/../linux_dev/betquery/server.out
     cp $envPath/dataserver/server.out $envPath/../linux_test/dataserver/server.out
     cp $envPath/gameserver/server.out $envPath/../linux_test/gameserver/server.out
+	cp $envPath/gameserver/server.out $envPath/../linux_test/gameserver2/server.out
     cp $envPath/betquery/server.out $envPath/../linux_test/betquery/server.out
     cp $envPath/dataserver/server.out $envPath/../linux_pro/dataserver/server.out
     cp $envPath/gameserver/server.out $envPath/../linux_pro/gameserver/server.out

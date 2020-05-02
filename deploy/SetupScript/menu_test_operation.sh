@@ -16,6 +16,9 @@ function server_stop()
     echo 'gameserver:'
 	serverName=gameserver
     ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 stop $serverName"
+	echo 'gameserver2:'
+	serverName=gameserver2
+    ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 stop $serverName"
 	echo 'dataserver:'
 	serverName=dataserver
     ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 stop $serverName"
@@ -43,6 +46,9 @@ function server_down()
     echo 'gameserver:'
     serverName=gameserver
     ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 delete $serverName"
+	echo 'gameserver2:'
+    serverName=gameserver2
+    ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 delete $serverName"
     echo 'betquery:'
     serverName=betquery
     ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 delete $serverName"
@@ -62,6 +68,9 @@ function server_start()
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/$serverName ; pm2 start --name $serverName server.out"
     echo 'gameserver:'
     serverName=gameserver
+    ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/$serverName ; pm2 start --name $serverName server.out"
+	echo 'gameserver2:'
+    serverName=gameserver2
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/$serverName ; pm2 start --name $serverName server.out"
     echo 'betquery:'
     serverName=betquery
@@ -89,6 +98,9 @@ function server_version()
     echo 'gameserver:'
     serverName=gameserver
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep ServerVersion server.log | tail -1"
+	echo 'gameserver2:'
+    serverName=gameserver2
+    ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep ServerVersion server.log | tail -1"
     echo 'betquery:'
     serverName=betquery
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep ServerVersion server.log | tail -1"
@@ -109,6 +121,9 @@ function server_error()
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
     echo 'gameserver:'
     serverName=gameserver
+    ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	echo 'gameserver2:'
+    serverName=gameserver2
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
     echo 'betquery:'
     serverName=betquery
