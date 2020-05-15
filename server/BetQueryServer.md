@@ -116,6 +116,7 @@ BetQueryServer
 		- spin_summary            SSlotSpinSummary  // Spin 摘要
 		- spin_details            []SSlotSpinDetail // spin 明細列表
 0. **token 取得注單明細**
+	- 營運商查看細單格式: {細單網頁網址}/?language={語系}&token={細單token}
 	- /slot/betdetail_token
 	- request: SCtoSBetDetailGetToken
 		- token string // 細單 token
