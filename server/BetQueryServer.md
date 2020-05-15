@@ -122,6 +122,7 @@ BetQueryServer
 		- token string // 細單 token
 	- response: SStoCBetDetailGetToken
 		- code                    int               // 回應碼
+		- game_code               string            // 遊戲代碼
 		- user_name               string            // 使用者名稱
 		- jp_fraction_multiple    int               // 彩金零頭部份轉為彩金現值要除的倍數, 也是貢獻比例的精準度
 		- money_fraction_multiple int               // 錢小數轉整數時要乘的倍數: 以整數型態保存, 轉為小數需除以此欄位
