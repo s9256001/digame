@@ -74,5 +74,9 @@ Game Common 封包
 		- JPLevelMinor = 3
 		- JPLevelMini  = 4
 	- 幣別<span id="幣別"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
-		- CNY = 1
-		- VND = 2
+		- CNY  = 1 // 人民幣
+		- VND  = 2 // 越南盾
+		- MYR  = 3 // 馬來西亞令吉
+		- THB  = 4 // 泰銖
+		- TWD  = 5 // 新台幣
+		- VNDK = 6 // 越南盾(K)
