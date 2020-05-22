@@ -58,7 +58,7 @@ Slot 封包<span id="標題"></span>
 		- Collection     uint8              // 蒐集資訊
 		- DemoModeRound  uint8				// Demo 場次 (0 表示結束)
 	- SSlotOptionValue
-		- OptionValueType uint8 // 選項值的類型
+		- OptionValueType uint8 // <a href="#選項值的類型">選項值的類型</a>
 		- SelectedValue   int   // 選到的值 (暗選會用到)
 		- OtherValues     []int // 其他的值列表 (暗選時前端需自己打亂)
 	- GtoCSlotNGPlay
@@ -84,6 +84,7 @@ Slot 封包<span id="標題"></span>
 		- BGOption  []SSlotOptionValue // BG 選項; 一次選擇內可以選出多個複合值的組合
 		- Win       int64              // BG 贏分 (錢)
 		- IsOver    bool               // 是否 BG 結束
+		- WinType   uint8              // <a href="#中獎類型">中獎類型</a>
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
@@ -337,3 +338,9 @@ Slot 封包<span id="標題"></span>
 	- 局模式<span id="局模式"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- Normal    = 0
 		- DoubleBet = 1
+	- 選項值的類型<span id="選項值的類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+		- SCREENMULTI = 0
+		- WILDMULTI   = 1
+		- ROUND       = 2
+		- SCORE       = 3
+		- OTHER       = 4
