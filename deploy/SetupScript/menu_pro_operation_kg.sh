@@ -1,4 +1,5 @@
 #!/bin/bash
+source script_lib
 source menu
 source ../Deploy/secret
 
@@ -190,8 +191,56 @@ function server_error()
 	serverName=wallet
 	sshpass -p $proPassword_KG ssh $proUser_KG@$proURL_KG_wallet -p$port_kg "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
 }
+function check_time()
+{
+	echo 'check time...'
+	
+	diflimit=10
+	
+	serverName=dataserver
+	timedif=$(abs $(($(date +%s) - $(sshpass -p $proPassword_KG ssh $proUser_KG@$proURL_KG_dataserver -p$port_kg "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	serverName=gameserver1
+	timedif=$(abs $(($(date +%s) - $(sshpass -p $proPassword_KG ssh $proUser_KG@$proURL_KG_gameserver1 -p$port_kg "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	serverName=gameserver2
+	timedif=$(abs $(($(date +%s) - $(sshpass -p $proPassword_KG ssh $proUser_KG@$proURL_KG_gameserver2 -p$port_kg "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	serverName=betquery
+	timedif=$(abs $(($(date +%s) - $(sshpass -p $proPassword_KG ssh $proUser_KG@$proURL_KG_betquery -p$port_kg "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	
+	serverName=wallet
+	timedif=$(abs $(($(date +%s) - $(sshpass -p $proPassword_KG ssh $proUser_KG@$proURL_KG_wallet -p$port_kg "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+}
 
-commands=(1 2 3 4 5 6 7 8)
+commands=(1 2 3 4 5 6 7 8 9)
 descriptions=(\
 	'copy'\
 	'stop'\
@@ -201,6 +250,7 @@ descriptions=(\
 	'status'\
 	'version'\
 	'error'\
+	'check time'\
 	)
 funcs=(\
 	'server_copy'\
@@ -211,6 +261,7 @@ funcs=(\
 	'server_status'\
 	'server_version'\
 	'server_error'\
+	'check_time'\
 	)
 
 menu_loop "pro kg operation" commands descriptions funcs

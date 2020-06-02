@@ -2,10 +2,15 @@
 
 for i in `find /var/log/*`
 do
-  result=$(echo $i | grep "mysql")
-  if [[ "$result" == "" ]]; then
+  mysql=$(echo $i | grep "mysql")
+  gz=$(echo $i | grep "gz")
+  if [[ "$mysql" == "" ]]; then
     if [ ! -d $i ]; then
-      cat /dev/null > $i
+      if [[ "$gz" != "" ]]; then
+        rm -r $i
+      else 
+        cat /dev/null > $i
+      fi
     fi
   fi
 done

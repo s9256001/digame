@@ -28,7 +28,7 @@ ESC_FORMAT="\033[0;%dm%s\033[0m"
 ESC_BOLD_FORMAT="\033[1;%dm%s\033[0m"
 
 #列印顏色字串
-#ex. print C_RED "hello!"
+#ex. printc C_RED "hello!"
 function printc()
 {
 	eval "c=\$$1"
@@ -329,3 +329,6 @@ function sufunc()
 	FUNC=$(declare -f  "$1")
 	sudo bash -c "cd $SH_DIR; $FUNC; "$1" "$2" "$3" "$4" "$5" "$6""
 }
+
+#用法: timedif=$(abs val))
+function abs() { echo ${1#-};}

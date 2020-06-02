@@ -1,4 +1,5 @@
 #!/bin/bash
+source script_lib
 source menu
 source ../Deploy/secret
 
@@ -188,8 +189,56 @@ function server_error()
 	serverName=wallet
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
 }
+function check_time()
+{
+	echo 'check time...'
+	
+	diflimit=10
+	
+	serverName=dataserver
+	timedif=$(abs $(($(date +%s) - $(ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	serverName=gameserver1
+	timedif=$(abs $(($(date +%s) - $(ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	serverName=gameserver2
+	timedif=$(abs $(($(date +%s) - $(ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	serverName=betquery
+	timedif=$(abs $(($(date +%s) - $(ssh -i ../Deploy/$proPem $proUser@$proURL_betquery "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+	
+	serverName=wallet
+	timedif=$(abs $(($(date +%s) - $(ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "date +%s"))))
+	if [ $timedif -lt $diflimit ]
+	then
+	  echo "$serverName synced! "$timedif"s"
+	else
+	  printc C_RED "$serverName not synced! "$timedif"s\n"
+	fi
+}
 
-commands=(1 2 3 4 5 6 7 8)
+commands=(1 2 3 4 5 6 7 8 9)
 descriptions=(\
 	'copy'\
 	'stop'\
@@ -199,6 +248,7 @@ descriptions=(\
 	'status'\
 	'version'\
 	'error'\
+	'check time'\
 	)
 funcs=(\
 	'server_copy'\
@@ -209,6 +259,7 @@ funcs=(\
 	'server_status'\
 	'server_version'\
 	'server_error'\
+	'check_time'\
 	)
 
 menu_loop "pro operation" commands descriptions funcs
