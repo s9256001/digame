@@ -104,6 +104,7 @@ Slot 封包<span id="標題"></span>
 		- 1: Failed
 		- 2: InvalidRoomState
 		- 3: MismatchRoundCode
+		- 4: InvalidSelection
 0. **Free Game Play**<span id="Free Game Play"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 	- CtoGSlotFGPlay
 		- Code int
