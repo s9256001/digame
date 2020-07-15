@@ -8,10 +8,10 @@ Fish Wallet 單一錢包
 		- token       string  // 憑證
 		- game_id     int     // 遊戲ID
 		- amount      float64 // 轉入金額
-		- take_all    bool    // 只拿整數
+		- take_all    bool    // 是否取用全部餘額, 只拿整數
 		- min_balance float64 // 最小帶入金額
 		- order_id    string  // 交易唯一碼
-	-response
+	- response
 		- code    int     // 回應碼
 		- balance float64 // 餘額
 0. **遊戲錢包轉至個人錢包**
@@ -24,7 +24,7 @@ Fish Wallet 單一錢包
 		- game_id   int     // 遊戲ID
 		- amount    float64 // 轉出金額
 		- order_id  string  // 交易唯一碼
-	-response
+	- response
 		- code    int     // 回應碼
 		- balance float64 // 餘額
 0. **通知注單**
@@ -39,5 +39,5 @@ Fish Wallet 單一錢包
 		- win        float64 // 贏分金額
 		- start_time string  // 開始時間
 		- end_time   string  // 結束時間
-	-response
+	- response
 		- code int // 回應碼
