@@ -4,8 +4,8 @@ GameLobbyServer
 	- post
 	- json 格式
 	- token 過期規則:
-		- 由平台娛樂城點大廳連結產出的 token 一小時候過期
-		- 點選遊戲後產出的 token 會含 game_token 資訊, 在該 game_token 最後投注時間一小時後過期
+		- 由平台娛樂城點大廳連結產出的 token 一小時後過期
+		- 點選遊戲後產出的 token 會含 game_token 資訊, max(產出時間, 該 game_token 最後投注時間)一小時後過期
 0. **回應碼**<span id="回應碼"></span>
 	- Success          = 0
 	- Failed           = 1
