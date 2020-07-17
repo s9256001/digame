@@ -3,9 +3,9 @@ GameLobbyServer
 0. **協定**
 	- post
 	- json 格式
-	- 憑證過期由兩個規則判定:
-		- 憑證產出時間一小時內
-		- 最後投注時間一小時內
+	- token 過期規則:
+		- 由平台娛樂城點大廳連結產出的 token 一小時候過期
+		- 點選遊戲後產出的 token 會含 game_token 資訊, 在該 game_token 最後投注時間一小時後過期
 0. **回應碼**<span id="回應碼"></span>
 	- Success          = 0
 	- Failed           = 1
