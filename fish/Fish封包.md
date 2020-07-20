@@ -53,7 +53,6 @@ Fish 封包<span id="標題"></span>
         - SeatID int // 座位 ID
 0. **出魚腳本**<span id="出魚腳本"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - SFishNPCInfo
-        - Code int
         - Type         int     // <a href="#出魚資訊類型">出魚資訊類型</a>
         - NpcID        int64   // NPC 識別碼
         - ParentNpcID  int64   // 軌跡錨點的 NPC
@@ -89,7 +88,7 @@ Fish 封包<span id="標題"></span>
         - SeatID   int     // 座位 ID
         - BulletID int64   // 子彈 ID / 射擊時間
         - Angle    float64 // 角度，若無可免填
-        - NpcID    int64   // NPC 識別碼 (鎖定用)
+        - NpcID    int64   // NPC 識別碼 (鎖定用, 穿越任何 NPC 直接命中此目標)
 0. **擊中魚**<span id="擊中魚"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - CtoGFishHit
         - Code int
