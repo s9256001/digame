@@ -57,6 +57,10 @@ Game Common 封包
 	- GtoCJackpotValue
 		- Code int
 		- JPViews []SJPView // 彩金檢視資訊列表
+0. **server 時間**
+	- GtoCServerTime
+		- Code int
+		- ServerTime int64 // server 時間 (由 1970/1/1 開始算的毫秒數)
 0. **列舉**
 	- 封包編號
 		- CtoGPing          = -1
@@ -68,6 +72,7 @@ Game Common 封包
 		- GtoCLeaveGame     = 1008
 		- GtoCPlayerBalance = 1011
 		- GtoCJackpotValue  = 1013
+		- GtoCServerTime    = 1014
 	- 彩金層級<span id="彩金層級"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- JPLevelGrand = 1
 		- JPLevelMajor = 2

@@ -9,7 +9,7 @@ Fish Wallet 單一錢包
 		- game_id     int     // 遊戲ID
 		- amount      float64 // 轉入金額
 		- take_all    bool    // 是否取用全部餘額, 只拿整數
-		- min_balance float64 // 最小帶入金額
+		- min_balance float64 // 最少需帶入金額
 		- order_id    string  // 交易唯一碼
 	- response
 		- code    int     // 回應碼
