@@ -97,8 +97,7 @@ Slot 封包<span id="標題"></span>
 		- SelectedIndex int // 選取的索引 (明選會用到)
 	- GtoCSlotLDPlay
 		- Code int
-		- Result       int                // 結果 (錯誤碼)
-		- LDOptionNext []SSlotOptionValue // 下次 LD 選項; 一次選擇內可以選出多個複合值的組合; 空表示結束
+		- Result int // 結果 (錯誤碼)
 	- 錯誤碼
 		- 0: Success
 		- 1: Failed
