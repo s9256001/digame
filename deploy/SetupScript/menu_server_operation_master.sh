@@ -15,7 +15,7 @@ funcs=(\
 	'server_pull master'\
 	'server_build master'\
 	'server_commit master'\
-	'server_deploy_with_password $demoPassword linux_demo $demoUser@$demoURL'\
+	'server_deploy_with_password $demoPassword linux_demo $demoUser@$demoURL $demoPort'\
 	'server_deploy_with_key ../Deploy/$dev1Pem linux_dev $dev1User@$dev1URL'\
 	)
 
