@@ -26,9 +26,14 @@ GameLobbyServer
 	- 進入遊戲大廳時呼叫一次
 	- request: SCtoSGameListGet
 		- token string // 憑證
+	- SGameInfo
+		- game_id     int
+		- 索引0: 英文, 索引1: 簡中, 索引2: 越南文
+		- game_names  []string // 遊戲名稱列表
+		- game_images []string // 遊戲圖片地址列表
 	- response: SStoCGameListGet
-		- code     int   // <a href="#回應碼">回應碼</a>
-		- game_ids []int // 遊戲 ID 列表
+		- code       int         // <a href="#回應碼">回應碼</a>
+		- game_infos []SGameInfo // 遊戲列表
 0. **進入遊戲**
 	- /game/open
 	- request: SCtoSGameOpen

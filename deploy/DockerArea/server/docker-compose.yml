@@ -63,4 +63,19 @@ services:
       - seccomp:unconfined
     command:
       [sh, -c, "./server.out"]
+  gamelobby:
+    image: golang:1.12.9
+    container_name: gamelobby
+    init: true
+    ports:
+      - "13201:13201"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ../../Server/wallet:/wallet
+    working_dir: /wallet/gamelobby
+    security_opt:
+      - seccomp:unconfined
+    command:
+      [sh, -c, "./server.out"]
       

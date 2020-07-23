@@ -90,13 +90,23 @@ function server_build()
     envPath=../../../../env/wallet/linux
     export GO111MODULE=on
     
-    go build -ldflags="-X 'digame/wallet/wallet/serverpkg.ServerVersion=$serverTag'" -o $envPath/wallet/server.out wallet/wallet/main.go
+	if [ ! -z "$serverTag" ]
+    then
+		go build -ldflags="-X 'digame/wallet/wallet/serverpkg.ServerVersion=$serverTag'" -o $envPath/wallet/server.out wallet/wallet/main.go
+		go build -ldflags="-X 'digame/wallet/gamelobby/serverpkg.ServerVersion=$serverTag'" -o $envPath/gamelobby/server.out wallet/gamelobby/main.go
+	else
+		go build -o $envPath/wallet/server.out wallet/wallet/main.go
+		go build -o $envPath/gamelobby/server.out wallet/gamelobby/main.go
+	fi
     
     if [ "$serverBranch" = "master" ]
     then
         cp $envPath/wallet/server.out $envPath/../linux_test/wallet/server.out
+		cp $envPath/gamelobby/server.out $envPath/../linux_test/gamelobby/server.out
         cp $envPath/wallet/server.out $envPath/../linux_pro/wallet/server.out
+		cp $envPath/gamelobby/server.out $envPath/../linux_pro/gamelobby/server.out
 		cp $envPath/wallet/server.out $envPath/../linux_pro_kg/wallet/server.out
+		cp $envPath/gamelobby/server.out $envPath/../linux_pro_kg/gamelobby/server.out
     fi
     popd > /dev/null
 }
