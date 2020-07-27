@@ -27,6 +27,9 @@ function server_copy()
 	serverName=wallet
 	cp -r $srcDir/$serverName $dstDir/$serverName/
 	cp $srcDir/* $dstDir/$serverName 2>/dev/null
+	serverName=gamelobby
+	cp -r $srcDir/$serverName $dstDir/$serverName/
+	cp $srcDir/* $dstDir/$serverName 2>/dev/null
 	
 	popd > /dev/null
 }
@@ -34,6 +37,9 @@ function server_stop()
 {
     echo 'server stop...'
 	
+	echo 'gamelobby:'
+	serverName=gamelobby
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 stop $serverName"
 	echo 'wallet:'
 	serverName=wallet
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 stop $serverName"
@@ -78,6 +84,9 @@ function server_deploy()
 	echo 'wallet:'
 	serverName=wallet
 	scp -i ../Deploy/$proPem -r $srcDir/$serverName $proUser@$proURL_wallet:~/$dstDir
+	echo 'gamelobby:'
+	serverName=gamelobby
+	scp -i ../Deploy/$proPem -r $srcDir/$serverName $proUser@$proURL_wallet:~/$dstDir
 	
 	popd > /dev/null
 }
@@ -103,6 +112,9 @@ function server_down()
 	echo 'wallet:'
 	serverName=wallet
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 delete $serverName"
+	echo 'gamelobby:'
+	serverName=gamelobby
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "pm2 delete $serverName"
 }
 function server_start()
 {
@@ -125,6 +137,9 @@ function server_start()
 	envDir=server/wallet
 	echo 'wallet:'
 	serverName=wallet
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/$serverName ; pm2 start --name $serverName server.out"
+	echo 'gamelobby:'
+	serverName=gamelobby
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/$serverName ; pm2 start --name $serverName server.out"
 }
 function server_status()
@@ -165,6 +180,9 @@ function server_version()
 	echo 'wallet:'
 	serverName=wallet
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep ServerVersion server.log | tail -1"
+	echo 'gamelobby:'
+	serverName=gamelobby
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep ServerVersion server.log | tail -1"
 }
 function server_error()
 {
@@ -187,6 +205,9 @@ function server_error()
 	envDir=server/wallet
 	echo 'wallet:'
 	serverName=wallet
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	echo 'gamelobby:'
+	serverName=gamelobby
 	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "cd $envDir/$serverName/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
 }
 function check_time()

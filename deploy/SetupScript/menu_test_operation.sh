@@ -6,6 +6,9 @@ function server_stop()
 {
     echo 'server stop...'
     
+	echo 'gamelobby:'
+	serverName=gamelobby
+    ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 stop $serverName"
     echo 'wallet:'
 	serverName=wallet
     ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 stop $serverName"
@@ -57,6 +60,9 @@ function server_down()
     echo 'wallet:'
     serverName=wallet
     ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 delete $serverName"
+	echo 'gamelobby:'
+    serverName=gamelobby
+    ssh -i ../Deploy/$testPem $testUser@$testURL "pm2 delete $serverName"
 }
 function server_start()
 {
@@ -79,6 +85,9 @@ function server_start()
     envDir=Server/wallet
     echo 'wallet:'
     serverName=wallet
+	ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/$serverName ; pm2 start --name $serverName server.out"
+	echo 'gamelobby:'
+    serverName=gamelobby
 	ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/$serverName ; pm2 start --name $serverName server.out"
 }
 function server_status()
@@ -109,7 +118,9 @@ function server_version()
     echo 'wallet:'
     serverName=wallet
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep ServerVersion server.log | tail -1"
-	
+	echo 'gamelobby:'
+    serverName=gamelobby
+    ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep ServerVersion server.log | tail -1"
 }
 function server_error()
 {
@@ -132,6 +143,9 @@ function server_error()
     envDir=Server/wallet
     echo 'wallet:'
     serverName=wallet
+    ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
+	echo 'gamelobby:'
+    serverName=gamelobby
     ssh -i ../Deploy/$testPem $testUser@$testURL "cd $envDir/logs/$serverName ; grep -rnw './server.log' -e '| ERR |'"
 }
 

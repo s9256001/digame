@@ -37,7 +37,7 @@ Fish Wallet 單一錢包
 		- round_code string  // 局號
 		- bet        float64 // 押注金額
 		- win        float64 // 贏分金額
-		- start_time string  // 開始時間
+		- begin_time string  // 開始時間
 		- end_time   string  // 結束時間
 	- response
 		- code int // 回應碼
