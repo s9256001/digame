@@ -47,6 +47,9 @@ Fish 封包<span id="標題"></span>
     - GtoCFishPlayerJoin
         - Code int
         - SeatInfo SFishSeatInfo // 座位資訊
+0. **離開漁場**<span id="離開漁場"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+    - CtoGFishLeaveField
+        - Code int
 0. **漁場內通知玩家離開**<span id="漁場內通知玩家離開"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - GtoCFishPlayerLeave
         - Code int
@@ -169,22 +172,23 @@ Fish 封包<span id="標題"></span>
 		- CtoGFishEnterField         = 12002
 		- GtoCFishEnterField         = 12003
 		- GtoCFishPlayerJoin         = 12004
-		- GtoCFishPlayerLeave        = 12005
-		- GtoCFishNewScript          = 12006
-		- CtoGFishSetBetMultiple     = 12007
-		- GtoCFishSetBetMultiple     = 12008
-		- CtoGFishShooting           = 12009
-		- GtoCFishShooting           = 12010
-		- CtoGFishHit                = 12011
-		- GtoCFishUpdateBalance      = 12012
-		- GtoCFishUpdateSkillNum     = 12013
-		- CtoGFishCastSkill          = 12014
-		- GtoCFishCastSkill          = 12015
-		- CtoGFishSkillAreaOfEffect  = 12016
-		- CtoGFishSkillTargetChanged = 12017
-		- GtoCFishSkillTargetChanged = 12018
-		- GtoCFishNpcSkinChanged     = 12019
-		- GtoCNPCLifeChanged         = 12020
+		- CtoGFishLeaveField         = 12005
+		- GtoCFishPlayerLeave        = 12006
+		- GtoCFishNewScript          = 12007
+		- CtoGFishSetBetMultiple     = 12008
+		- GtoCFishSetBetMultiple     = 12009
+		- CtoGFishShooting           = 12010
+		- GtoCFishShooting           = 12011
+		- CtoGFishHit                = 12012
+		- GtoCFishUpdateBalance      = 12013
+		- GtoCFishUpdateSkillNum     = 12014
+		- CtoGFishCastSkill          = 12015
+		- GtoCFishCastSkill          = 12016
+		- CtoGFishSkillAreaOfEffect  = 12017
+		- CtoGFishSkillTargetChanged = 12018
+		- GtoCFishSkillTargetChanged = 12019
+		- GtoCFishNpcSkinChanged     = 12020
+		- GtoCNPCLifeChanged         = 12021
     - 出魚資訊類型<span id="出魚資訊類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
         - NPCACTIVE    = 0 // 一般的魚進場
         - BOSSNOTIFY   = 1 // 撥放BOSS出場字幕
