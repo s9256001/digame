@@ -60,7 +60,7 @@ Game Common 封包
 0. **server 時間**
 	- GtoCServerTime
 		- Code int
-		- ServerTime int64 // server 時間 (由 1970/1/1 開始算的毫秒數)
+		- ServerTime int64 // server 時間 (server 開機開始算的毫秒數)
 0. **列舉**
 	- 封包編號
 		- CtoGPing          = -1
