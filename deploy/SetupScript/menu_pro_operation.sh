@@ -258,8 +258,31 @@ function check_time()
 	  printc C_RED "$serverName not synced! "$timedif"s\n"
 	fi
 }
+function check_df()
+{
+	echo 'check df...'
+	
+	envDir=server/server_go
+	echo 'dataserver:'
+	serverName=dataserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_dataserver "df -h | grep /dev/nvme"
+	echo 'gameserver 1:'
+	serverName=gameserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver1 "df -h | grep /dev/nvme"
+	echo 'gameserver 2:'
+	serverName=gameserver
+	ssh -i ../Deploy/$proPem $proUser@$proURL_gameserver2 "df -h | grep /dev/nvme"
+	echo 'betquery:'
+	serverName=betquery
+	ssh -i ../Deploy/$proPem $proUser@$proURL_betquery "df -h | grep /dev/nvme"
+	
+	envDir=server/wallet
+	echo 'wallet:'
+	serverName=wallet
+	ssh -i ../Deploy/$proPem $proUser@$proURL_wallet "df -h | grep /dev/nvme"
+}
 
-commands=(1 2 3 4 5 6 7 8 9)
+commands=(1 2 3 4 5 6 7 8 9 10)
 descriptions=(\
 	'copy'\
 	'stop'\
@@ -270,6 +293,7 @@ descriptions=(\
 	'version'\
 	'error'\
 	'check time'\
+	'check df'\
 	)
 funcs=(\
 	'server_copy'\
@@ -281,6 +305,7 @@ funcs=(\
 	'server_version'\
 	'server_error'\
 	'check_time'\
+	'check_df'\
 	)
 
 menu_loop "pro operation" commands descriptions funcs
