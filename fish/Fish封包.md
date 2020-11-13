@@ -26,9 +26,9 @@ Fish 封包<span id="標題"></span>
     - GtoCFishInit
         - Code int
         - // GtoCJoinGame 後 Server 會直接送這封包
-	- ServerVersion         string          // 版號：1.0.001.23 (主版號.次版號.更新數.相容) ，次版號、更新數可忽略，主版號或相容性不同即為不相容，反之則為相容
+        - ServerVersion         string          // 版號：1.0.001.23 (主版號.次版號.更新數.相容) ，次版號、更新數可忽略，主版號或相容性不同即為不相容，反之則為相容
         - MoneyFractionMultiple int             // 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
-	- Denom                 int             // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
+        - Denom                 int             // 錢轉分數的匯率 (單位 1/100): 分數=錢/(Denom/100)=錢x(100/Denom)
         - BetUnit               int64           // 押注單位 (錢); 押注乘數x押注單位=一發子彈的押注
         - FishFieldSets         []SFishFieldSet // 漁場設定列表
 0. **進入漁場**<span id="進入漁場"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
