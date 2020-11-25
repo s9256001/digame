@@ -89,7 +89,7 @@ Fish 封包<span id="標題"></span>
         - BulletID        int64   // 子彈 ID / 射擊時間
         - Angle           float64 // 角度，若無可免填
         - NpcID           int64   // NPC 識別碼 (鎖定用)
-	- SeatIDOfMyAgent int     // 這是代理脽，若無可免填
+        - SeatIDOfMyAgent int   // 這是代理脽，若無可免填
     - GtoCFishShooting
         - Code int
         - SeatID   int     // 座位 ID
@@ -105,7 +105,7 @@ Fish 封包<span id="標題"></span>
         - Code int
         - BulletID	  int64		  // 子彈 ID
         - HitInfos	  []SFishBHitInfo // 命中資訊列表
-	- SeatIDOfMyAgent int             // 這是代理脽，若無可免填
+        - SeatIDOfMyAgent int             // 這是代理脽，若無可免填
 0. **金額變更**<span id="金額變更"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - GtoCFishUpdateBalance
         - Code int
