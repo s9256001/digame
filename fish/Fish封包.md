@@ -18,6 +18,7 @@ Fish 封包<span id="標題"></span>
 <a href="#NPC 的皮膚更換">NPC 的皮膚更換</a><br />
 <a href="#NPC 時間調整 (或刪除)">NPC 時間調整 (或刪除)</a><br />
 <a href="#設定注單編號">設定注單編號</a><br />
+<a href="#Robot">Robot</a><br />
 <a href="#列舉">列舉</a>
 
 0. **初始資訊**<span id="初始資訊"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
@@ -182,6 +183,15 @@ Fish 封包<span id="標題"></span>
     - GtoCSetRoundCode
         - Code int
         - RoundCode string // 注單編號
+0. **Robot**<span id="Robot"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+    - GtoCRobotTask
+        - Code int
+        - RobotSeatID int // 座位 ID
+        - NpcID int64 // NPC 識別碼
+    - CtoGRobotTaskAbort
+        - Code int
+        - RobotSeatID int // 座位 ID
+        - NpcID int64 // NPC 識別碼
 0. **列舉**<span id="列舉"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - 封包編號<span id="封包編號"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GtoCFishInit               = 12001
@@ -206,6 +216,8 @@ Fish 封包<span id="標題"></span>
 		- GtoCFishNpcSkinChanged     = 12020
 		- GtoCNPCLifeChanged         = 12021
 		- GtoCSetRoundCode           = 12022
+		- GtoCRobotTask              = 12022
+		- CtoGRobotTaskAbort         = 12022
     - 出魚資訊類型<span id="出魚資訊類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
         - NPCACTIVE    = 0 // 一般的魚進場
         - BOSSNOTIFY   = 1 // 撥放BOSS出場字幕
