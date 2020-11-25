@@ -175,6 +175,10 @@ Fish 封包<span id="標題"></span>
     - GtoCNPCLifeChanged
         - Code int
         - NPCLifeAdjustments []SFishNPCLifeAdjustment // 只要此欄位存在 (陣列長度不為 0), 程式就須處理
+0. **設定注單編號**<span id="設定注單編號"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
+    - GtoCSetRoundCode
+        - Code int
+        - RoundCode string // 注單編號
 0. **列舉**<span id="列舉"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - 封包編號<span id="封包編號"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GtoCFishInit               = 12001
@@ -198,6 +202,7 @@ Fish 封包<span id="標題"></span>
 		- GtoCFishSkillTargetChanged = 12019
 		- GtoCFishNpcSkinChanged     = 12020
 		- GtoCNPCLifeChanged         = 12021
+		- GtoCSetRoundCode           = 12022
     - 出魚資訊類型<span id="出魚資訊類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
         - NPCACTIVE    = 0 // 一般的魚進場
         - BOSSNOTIFY   = 1 // 撥放BOSS出場字幕
