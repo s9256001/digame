@@ -216,8 +216,8 @@ Fish 封包<span id="標題"></span>
 		- GtoCFishNpcSkinChanged     = 12020
 		- GtoCNPCLifeChanged         = 12021
 		- GtoCSetRoundCode           = 12022
-		- GtoCRobotTask              = 12022
-		- CtoGRobotTaskAbort         = 12022
+		- GtoCRobotTask              = 12023
+		- CtoGRobotTaskAbort         = 12024
     - 出魚資訊類型<span id="出魚資訊類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
         - NPCACTIVE    = 0 // 一般的魚進場
         - BOSSNOTIFY   = 1 // 撥放BOSS出場字幕
