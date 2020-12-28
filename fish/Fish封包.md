@@ -25,7 +25,7 @@ Fish 封包<span id="標題"></span>
     - SFishFieldSet
         - BetMultiples []int // 押注乘數列表
         - MinBankroll  int64 // 最少帶入資金
-	- MaxBankroll  int64 // 最大帶入資金
+        - MaxBankroll  int64 // 最大帶入資金
     - GtoCFishInit
         - Code int
         - // GtoCJoinGame 後 Server 會直接送這封包
@@ -39,9 +39,11 @@ Fish 封包<span id="標題"></span>
         - SeatID      int   // 座位 ID
         - Balance     int64 // 金額 (錢)
         - BetMultiple int   // 押注乘數
+        - SkillCountdown []int // 技能使用中的倒數，0 = 技能不在使用中，正值 = 技能還有多久會停止
     - CtoGFishEnterField
         - Code int
         - FieldIndex int // 漁場索引
+        - Bankroll   int64 // 攜帶資金
     - GtoCFishEnterField
         - Code int
         - Result    int             // 結果 (錯誤碼)
