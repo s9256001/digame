@@ -24,7 +24,8 @@ Fish 封包<span id="標題"></span>
 0. **初始資訊**<span id="初始資訊"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - SFishFieldSet
         - BetMultiples []int // 押注乘數列表
-        - MinBalance   int64 // 最少需帶入金額
+        - MinBankroll  int64 // 最少帶入資金
+	- MaxBankroll  int64 // 最大帶入資金
     - GtoCFishInit
         - Code int
         - // GtoCJoinGame 後 Server 會直接送這封包
