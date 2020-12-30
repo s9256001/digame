@@ -24,8 +24,8 @@ Fish 封包<span id="標題"></span>
 0. **初始資訊**<span id="初始資訊"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - SFishFieldSet
         - BetMultiples []int // 押注乘數列表
-        - MinBankroll  int64 // 最少帶入資金
-        - MaxBankroll  int64 // 最大帶入資金
+        - MinBuyin     int64 // 最少帶入資金
+        - MaxBuyin     int64 // 最大帶入資金
     - GtoCFishInit
         - Code int
         - // GtoCJoinGame 後 Server 會直接送這封包
@@ -43,7 +43,7 @@ Fish 封包<span id="標題"></span>
     - CtoGFishEnterField
         - Code int
         - FieldIndex int // 漁場索引
-        - Bankroll   int64 // 攜帶資金
+        - Buyin      int64 // 攜帶資金
     - GtoCFishEnterField
         - Code int
         - Result    int             // 結果 (錯誤碼)
@@ -237,6 +237,7 @@ Fish 封包<span id="標題"></span>
         - ROULETTE   = 3; // NpcID 會指出哪隻 NPC 發出的輪盤
         - ENERGYBAR  = 4; // NpcID 固定為 0
         - LEVELBONUS = 5; // NpcID 會填入哪個等級所送的獎勵
+        - BANKROLL   = 6; // 更新大廳的Balance(絕對值)
     - 技能編號<span id="技能編號"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
         - NONE   = 0; // 基本上抓到這個值就是出錯了, 伺服器也會用這個值來標示子彈為普通
         - FIRST  = 1; // 程式定位用
