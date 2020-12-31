@@ -1,7 +1,7 @@
 Fish 封包<span id="標題"></span>
 =========================
 
-<a href="#說明">說明11</a><br />
+<a href="#說明">說明</a><br />
 <a href="#初始資訊">初始資訊</a><br />
 <a href="#進入漁場">進入漁場</a><br />
 <a href="#漁場內通知玩家進入">漁場內通知玩家進入</a><br />
@@ -19,7 +19,7 @@ Fish 封包<span id="標題"></span>
 <a href="#NPC 時間調整 (或刪除)">NPC 時間調整 (或刪除)</a><br />
 <a href="#設定注單編號">設定注單編號</a><br />
 <a href="#Robot">Robot</a><br />
-
+<a href="#列舉">列舉</a>
 
 0. **初始資訊**<span id="初始資訊"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - SFishFieldSet
