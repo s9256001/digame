@@ -195,6 +195,10 @@ Fish 封包<span id="標題"></span>
         - Code int
         - RobotSeatID int // 座位 ID
         - NpcID int64 // NPC 識別碼
+    - GtoCRobotTaskAbort
+        - Code int
+        - RobotSeatID int // 座位 ID
+        - NpcID int64 // NPC 識別碼
 0. **列舉**<span id="列舉"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - 封包編號<span id="封包編號"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
 		- GtoCFishInit               = 12001
@@ -221,6 +225,7 @@ Fish 封包<span id="標題"></span>
 		- GtoCSetRoundCode           = 12022
 		- GtoCRobotTask              = 12023
 		- CtoGRobotTaskAbort         = 12024
+		- GtoCRobotTaskAbort         = 12025
     - 出魚資訊類型<span id="出魚資訊類型"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
         - NPCACTIVE    = 0 // 一般的魚進場
         - BOSSNOTIFY   = 1 // 撥放BOSS出場字幕
