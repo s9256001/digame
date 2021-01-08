@@ -189,6 +189,7 @@ Fish 封包<span id="標題"></span>
 0. **Robot**<span id="Robot"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#標題">(回到標題)</a>
     - GtoCRobotTask
         - Code int
+        - PlayerID int // 代理者 ID
         - RobotSeatID int // 座位 ID
         - NpcID int64 // NPC 識別碼
     - CtoGRobotTaskAbort
