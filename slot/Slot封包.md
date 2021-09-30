@@ -57,6 +57,8 @@ Slot 封包<span id="標題"></span>
 		- Stage          uint8              // 遊戲階段
 		- Collection     uint8              // 蒐集資訊
 		- DemoModeRound  uint8				// Demo 場次 (0 表示結束)
+		- StripNo     uint8              // 前端使用滾輪表編號
+		- StripIndex     []uint              // 前端使用停輪位置
 	- SSlotOptionValue
 		- OptionValueType uint8 // <a href="#選項值的類型">選項值的類型</a>
 		- SelectedValue   int   // 選到的值 (暗選會用到)
