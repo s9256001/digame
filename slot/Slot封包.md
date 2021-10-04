@@ -52,13 +52,12 @@ Slot 封包<span id="標題"></span>
 		- FGCurrentTimes uint8              // FG 目前次數
 		- FGRemainTimes  uint8              // FG 剩餘次數
 		- FGMaxFlag      bool               // FG 達最高上限標記
+		- RndNum         []int              // 滾輪位置
 		- Win            int64              // 贏分 (錢)
 		- ExtraData      string             // client 表演的額外資料
 		- Stage          uint8              // 遊戲階段
 		- Collection     uint8              // 蒐集資訊
 		- DemoModeRound  uint8				// Demo 場次 (0 表示結束)
-		- StripNo     uint8              // 前端使用滾輪表編號
-		- StripIndex     []uint              // 前端使用停輪位置
 	- SSlotOptionValue
 		- OptionValueType uint8 // <a href="#選項值的類型">選項值的類型</a>
 		- SelectedValue   int   // 選到的值 (暗選會用到)
